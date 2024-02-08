@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class GestacaoDTO {
+public class VisualizarGestacaoDTO {
     private Long id;
     private Gestante gestante;
     private boolean consumoAlcool;
@@ -29,7 +29,7 @@ public class GestacaoDTO {
     private boolean gravidezPlanejada;
     private String grupoSanguineo;
     private BigDecimal pesoAntesGestacao;
-    private boolean riscoGestacional;
+    private int riscoGestacional;
     private boolean vacinaHepatiteB;
     private String situacaoGestacional;
 
