@@ -1,22 +1,23 @@
 package com.system.angels.service;
 
 import com.system.angels.domain.Gestante;
-import com.system.angels.dto.GestacaoDTO;
+import com.system.angels.dto.GestacaoCadastroDTO;
+import com.system.angels.dto.VisualizarGestacaoDTO;
 import java.util.List;
 
 public interface iGestacaoService {
 
-    public GestacaoDTO adicionarGestacao(GestacaoDTO gestacaoDTO);
+    public GestacaoCadastroDTO adicionarGestacao(GestacaoCadastroDTO gestacaoDTO);
 
-    public GestacaoDTO salvarGestacao(GestacaoDTO gestacaoDTO);
+    public GestacaoCadastroDTO salvarGestacao(GestacaoCadastroDTO gestacaoDTO);
 
-    public GestacaoDTO obterGestacaoPorId(Long id);
+    public VisualizarGestacaoDTO obterGestacaoPorId(Long id);
 
     public boolean gestacaoExiste(Long id);
 
-    public GestacaoDTO obterGestacaoPorGestante(Gestante gestante);
+    public VisualizarGestacaoDTO obterGestacaoPorGestante(Gestante gestante);
 
-    public List<GestacaoDTO> obterTodasGestacoes();
+    public List<VisualizarGestacaoDTO> obterTodasGestacoes();
 
     public void deletarGestacao(Long id);
 
