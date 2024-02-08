@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-interface GestanteRepository extends JpaRepository<Gestante, Long> {
+public interface GestanteRepository extends JpaRepository<Gestante, Long> {
     Optional<Gestante> findGestanteByCpf(String cpf);
 }
