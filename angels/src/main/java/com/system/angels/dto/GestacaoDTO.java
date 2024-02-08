@@ -1,5 +1,6 @@
 package com.system.angels.dto;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -14,18 +15,18 @@ import lombok.Setter;
 
 public class GestacaoDTO {
     private boolean consumoAlcool;
-    private String frequenciaAlcool;
-    private Date ultimaMenstruacao;
-    private Date gestacaoInicio;
+    private int frequenciaUsoAlcool;
+    private Date dataUltimaMenstruacao;
+    private Date dataInicioGestacao;
     private String fatorRh;
     private boolean fuma;
-    private int cigarrosPorDia;
-    private boolean drogasUso;
-    private boolean planejada;
+    private int quantidadeCigarrosDia;
+    private int usoDrogas;
+    private boolean gravidezPlanejada;
     private String grupoSanguineo;
-    private int pesoPre;
+    private BigDecimal pesoAntesGestacao;
     private boolean riscoGestacional;
-    private boolean hepatiteb;
+    private boolean vacinaHepatiteB;
     private String situacaoGestacional;
 
 }
