@@ -3,6 +3,8 @@ package com.system.angels.dto;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.system.angels.domain.Gestante;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +16,8 @@ import lombok.Setter;
 @Setter
 
 public class GestacaoDTO {
+    private Long id;
+    private Gestante gestante;
     private boolean consumoAlcool;
     private int frequenciaUsoAlcool;
     private Date dataUltimaMenstruacao;
