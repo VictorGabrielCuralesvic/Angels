@@ -2,15 +2,16 @@ package com.system.angels.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
-public class ExameDTO {
-    private Long acompanhamentoId;
+@AllArgsConstructor
+public class AtualizarExameDTO {
+    private Long id;
+    private long acompanhamentoId;
     private String tipo;
     private String resultado;
     private String observacao;
