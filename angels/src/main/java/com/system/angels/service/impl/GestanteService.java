@@ -22,4 +22,14 @@ public class GestanteService implements iGestacaoService {
 
         return gestante.get();
     }
+
+    public Gestante buscarGestantePorCpf(String cpf) throws RuntimeException {
+        Optional<Gestante> gestante = repositorio.findGestanteByCpf(cpf);
+
+        if (gestante.isEmpty()) {
+            throw new RuntimeException("Não existe uma gestante associada a esse cpf.");
+        }
+
+        return gestante.get();
+    }
 }
