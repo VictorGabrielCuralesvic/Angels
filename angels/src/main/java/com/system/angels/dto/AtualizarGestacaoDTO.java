@@ -17,6 +17,7 @@ import lombok.Setter;
 
 public class AtualizarGestacaoDTO {
     private Long id;
+    private Long gestante_id;
     private boolean consumoAlcool;
     private int frequenciaUsoAlcool;
     private Date dataUltimaMenstruacao;
