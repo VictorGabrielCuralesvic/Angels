@@ -87,8 +87,8 @@ public class GestanteService implements iGestacaoService {
         return repositorio.save(gestante);
     }
 
-    public void deletarGestante(String cpf) {
-        Gestante gestante = buscarGestantePorCpf(cpf);
+    public void deletarGestante(Long id) {
+        Gestante gestante = buscarGestantePorId(id);
         repositorio.delete(gestante);
     }
 }
