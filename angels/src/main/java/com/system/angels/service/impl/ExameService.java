@@ -7,9 +7,10 @@ import com.system.angels.dto.RemoverExameDTO;
 import com.system.angels.dto.VisualizarExameDTO;
 import com.system.angels.repository.ExameRepository;
 import com.system.angels.service.iExameService;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
-
+@Service
 public class ExameService implements iExameService {
 
     private final ExameRepository exameRepository;
