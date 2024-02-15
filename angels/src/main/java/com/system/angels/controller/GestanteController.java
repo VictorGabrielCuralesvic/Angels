@@ -4,10 +4,7 @@ import com.system.angels.domain.Gestante;
 import com.system.angels.service.impl.GestanteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -32,6 +29,12 @@ public class GestanteController {
     @GetMapping("/cpf/{cpf}")
     public ResponseEntity<Gestante> buscarGestantePorCpf(@PathVariable String cpf) {
         Gestante gestante = service.buscarGestantePorCpf(cpf);
+        return ResponseEntity.ok(gestante);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Gestante> atualizarGestante(@PathVariable Long id, @RequestBody Gestante gestanteAtualizada) {
+        Gestante gestante = service.atualizarGestante(id, gestanteAtualizada);
         return ResponseEntity.ok(gestante);
     }
 }
