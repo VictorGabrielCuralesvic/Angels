@@ -33,6 +33,10 @@ public class GestanteService implements iGestacaoService {
         return gestante.get();
     }
 
+    public Gestante registrarGestante(Gestante gestante) {
+        return repositorio.save(gestante);
+    }
+
     public void deletarGestante(String cpf) {
         Gestante gestante = buscarGestantePorCpf(cpf);
         repositorio.delete(gestante);
