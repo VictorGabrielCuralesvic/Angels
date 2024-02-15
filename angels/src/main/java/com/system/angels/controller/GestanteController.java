@@ -37,4 +37,10 @@ public class GestanteController {
         Gestante gestante = service.atualizarGestante(id, gestanteAtualizada);
         return ResponseEntity.ok(gestante);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarGestante(@PathVariable Long id) {
+        service.deletarGestante(id);
+        return ResponseEntity.noContent().build();
+    }
 }
