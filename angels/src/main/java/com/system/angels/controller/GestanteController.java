@@ -1,6 +1,7 @@
 package com.system.angels.controller;
 
 import com.system.angels.domain.Gestante;
+import com.system.angels.dto.VisualizarGestanteDTO;
 import com.system.angels.service.impl.GestanteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,21 +22,24 @@ public class GestanteController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Gestante> buscarGestantePorId(@PathVariable Long id) {
+    public ResponseEntity<VisualizarGestanteDTO> buscarGestantePorId(@PathVariable Long id) {
         Gestante gestante = service.buscarGestantePorId(id);
-        return ResponseEntity.ok(gestante);
+        VisualizarGestanteDTO gestanteDTO = new VisualizarGestanteDTO(gestante);
+        return ResponseEntity.ok(gestanteDTO);
     }
 
     @GetMapping("/cpf/{cpf}")
-    public ResponseEntity<Gestante> buscarGestantePorCpf(@PathVariable String cpf) {
+    public ResponseEntity<VisualizarGestanteDTO> buscarGestantePorCpf(@PathVariable String cpf) {
         Gestante gestante = service.buscarGestantePorCpf(cpf);
-        return ResponseEntity.ok(gestante);
+        VisualizarGestanteDTO gestanteDTO = new VisualizarGestanteDTO(gestante);
+        return ResponseEntity.ok(gestanteDTO);
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<Gestante> atualizarGestante(@PathVariable Long id, @RequestBody Gestante gestanteAtualizada) {
+    public ResponseEntity<VisualizarGestanteDTO> atualizarGestante(@PathVariable Long id, @RequestBody Gestante gestanteAtualizada) {
         Gestante gestante = service.atualizarGestante(id, gestanteAtualizada);
-        return ResponseEntity.ok(gestante);
+        VisualizarGestanteDTO gestanteDTO = new VisualizarGestanteDTO(gestante);
+        return ResponseEntity.ok(gestanteDTO);
     }
 
     @DeleteMapping("/{id}")
