@@ -6,12 +6,17 @@ import com.system.angels.service.iGestacaoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class GestanteService implements iGestacaoService {
     public final GestanteRepository repositorio;
+
+    public List<Gestante> listarGestantes() {
+        return repositorio.findAll();
+    }
 
     public Gestante buscarGestantePorId(Long id) throws RuntimeException {
         Optional<Gestante> gestante = repositorio.findById(id);
