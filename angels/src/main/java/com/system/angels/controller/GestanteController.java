@@ -28,4 +28,10 @@ public class GestanteController {
         Gestante gestante = service.buscarGestantePorId(id);
         return ResponseEntity.ok(gestante);
     }
+
+    @GetMapping("/cpf/{cpf}")
+    public ResponseEntity<Gestante> buscarGestantePorCpf(@PathVariable String cpf) {
+        Gestante gestante = service.buscarGestantePorCpf(cpf);
+        return ResponseEntity.ok(gestante);
+    }
 }
