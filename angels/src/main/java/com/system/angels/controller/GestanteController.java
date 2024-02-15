@@ -1,6 +1,7 @@
 package com.system.angels.controller;
 
 import com.system.angels.domain.Gestante;
+import com.system.angels.dto.GestanteCadastroDTO;
 import com.system.angels.dto.VisualizarGestanteDTO;
 import com.system.angels.service.impl.GestanteService;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +34,13 @@ public class GestanteController {
         Gestante gestante = service.buscarGestantePorCpf(cpf);
         VisualizarGestanteDTO gestanteDTO = new VisualizarGestanteDTO(gestante);
         return ResponseEntity.ok(gestanteDTO);
+    }
+
+    @PostMapping
+    public ResponseEntity<GestanteCadastroDTO> cadastrarGestante(@RequestBody Gestante gestante) {
+        GestanteCadastroDTO gestanteCadastroDTO = new GestanteCadastroDTO(gestante);
+        service.registrarGestante(gestante);
+        return ResponseEntity.ok(gestanteCadastroDTO);
     }
 
     @PutMapping("{id}")
