@@ -7,18 +7,18 @@ import java.util.List;
 
 public interface iGestacaoService {
 
-    public Gestacao adicionarGestacao(GestacaoCadastroDTO gestacaoDTO);
+    Gestacao adicionarGestacao(GestacaoCadastroDTO gestacaoDTO);
     
-    public Gestacao obterGestacaoPorId(Long id);
+    Gestacao obterGestacaoPorId(Long id);
 
-    public Gestacao obterGestacaoPorGestante(Long gestante_id);
+    Gestacao obterGestacaoPorGestante(Long gestante_id);
     
-    public boolean gestacaoExiste(Long id);
+    boolean gestacaoExiste(Long id);
     
-    public List<Gestacao> obterTodasGestacoes();
+    List<Gestacao> obterTodasGestacoes();
     
-    public Gestacao atualizarGestacao(AtualizarGestacaoDTO gestacaoDTO);
+    Gestacao atualizarGestacao(AtualizarGestacaoDTO gestacaoDTO);
     
-    public void deletarGestacao(Long id);
+    void deletarGestacao(Long id);
 
 }

@@ -27,7 +27,7 @@ public class ExameService implements iExameService {
         // associar exame ao acompanhamento
         exame = exameRepository.save(exame);
         ExameDTO createdExameDTO = new ExameDTO();
-        //createdExameDTO.setAcompanhamentoId(exame.getAcompanhamento().getId());
+        createdExameDTO.setAcompanhamentoId(exame.getAcompanhamento());
         createdExameDTO.setTipo(exame.getTipo());
         createdExameDTO.setResultado(exame.getResultado());
         createdExameDTO.setObservacao(exame.getObservacao());

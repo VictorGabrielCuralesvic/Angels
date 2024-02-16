@@ -1,5 +1,6 @@
 package com.system.angels.dto;
 
+import com.system.angels.domain.Acompanhamento;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class VisualizarExameDTO {
     private Long id;
-    private long acompanhamentoId;
+    private Acompanhamento acompanhamentoId;
     private String tipo;
     private String resultado;
     private String observacao;
