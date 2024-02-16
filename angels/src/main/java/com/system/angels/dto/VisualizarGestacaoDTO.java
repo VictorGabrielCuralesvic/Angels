@@ -27,10 +27,10 @@ public class VisualizarGestacaoDTO {
     private int quantidadeCigarrosDia;
     private int usoDrogas;
     private boolean gravidezPlanejada;
-    private String grupoSanguineo;
+    private int grupoSanguineo;
     private BigDecimal pesoAntesGestacao;
     private int riscoGestacional;
     private boolean vacinaHepatiteB;
-    private String situacaoGestacional;
+    private int situacaoGestacional;
 
 }
