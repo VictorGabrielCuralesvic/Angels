@@ -15,20 +15,40 @@ import com.system.angels.service.iGestacaoService;
 @Service
 public class GestacaoService implements iGestacaoService {
 
+    private final GestacaoRepository gestacaoRepository;
+
     @Autowired
-    GestacaoRepository gestacaoRepository;
+    public GestacaoService(GestacaoRepository gestacaoRepository) {
+        this.gestacaoRepository = gestacaoRepository;
+    }
 
     @Override
     public Gestacao adicionarGestacao(GestacaoCadastroDTO gestacaoDTO) {
-        //TODO
-        return null;
+        Gestacao gestacao = new Gestacao();
+        gestacao.setGestante_id(gestacaoDTO.getGestante_id());
+        gestacao.setConsumoAlcool(gestacaoDTO.isConsumoAlcool());
+        gestacao.setFrequenciaUsoAlcool(gestacaoDTO.getFrequenciaUsoAlcool());
+        gestacao.setDataUltimaMenstruacao(gestacaoDTO.getDataUltimaMenstruacao());
+        gestacao.setDataInicioGestacao(gestacaoDTO.getDataInicioGestacao());
+        gestacao.setFatorRh(gestacaoDTO.getFatorRh());
+        gestacao.setFuma(gestacaoDTO.isFuma());
+        gestacao.setQuantidadeCigarrosDia(gestacaoDTO.getQuantidadeCigarrosDia());
+        gestacao.setUsoDrogas(gestacaoDTO.getUsoDrogas());
+        gestacao.setGravidezPlanejada(gestacaoDTO.isGravidezPlanejada());
+        gestacao.setGrupoSanguineo(gestacaoDTO.getGrupoSanguineo());
+        gestacao.setPesoAntesGestacao(gestacaoDTO.getPesoAntesGestacao());
+        gestacao.setRiscoGestacional(gestacaoDTO.getRiscoGestacional());
+        gestacao.setVacinaHepatiteB(gestacaoDTO.isVacinaHepatiteB());
+        gestacao.setSituacaoGestacional(gestacaoDTO.getSituacaoGestacional());
+
+        return gestacaoRepository.save(gestacao);
     }
 
     @Override
     public Gestacao obterGestacaoPorId(Long id) {
         Optional<Gestacao> gestacao = gestacaoRepository.findById(id);
 
-        if(gestacao.isEmpty()) {
+        if (gestacao.isEmpty()) {
             throw new RuntimeException("Não existe uma gestacão associada ao id.");
         }
         return gestacao.get();
@@ -58,16 +78,42 @@ public class GestacaoService implements iGestacaoService {
     }
 
     @Override
-public Gestacao atualizarGestacao(AtualizarGestacaoDTO gestacaoDTO) {
-    return null;
-    //TODO
-}
+    public Gestacao atualizarGestacao(AtualizarGestacaoDTO gestacaoDTO) {
+        // Verifique se a gestação existe
+        if (gestacaoRepository.existsById(gestacaoDTO.getId())) {
+            // Encontre a gestação pelo ID
+            Gestacao gestacaoExistente = gestacaoRepository.findById(gestacaoDTO.getId()).orElse(null);
+            if (gestacaoExistente != null) {
+                // Atualize os dados da gestação com base no DTO de atualização
+                gestacaoExistente.setConsumoAlcool(gestacaoDTO.isConsumoAlcool());
+                gestacaoExistente.setFrequenciaUsoAlcool(gestacaoDTO.getFrequenciaUsoAlcool());
+                gestacaoExistente.setDataUltimaMenstruacao(gestacaoDTO.getDataUltimaMenstruacao());
+                gestacaoExistente.setDataInicioGestacao(gestacaoDTO.getDataInicioGestacao());
+                gestacaoExistente.setFatorRh(gestacaoDTO.getFatorRh());
+                gestacaoExistente.setFuma(gestacaoDTO.isFuma());
+                gestacaoExistente.setQuantidadeCigarrosDia(gestacaoDTO.getQuantidadeCigarrosDia());
+                gestacaoExistente.setUsoDrogas(gestacaoDTO.getUsoDrogas());
+                gestacaoExistente.setGravidezPlanejada(gestacaoDTO.isGravidezPlanejada());
+                gestacaoExistente.setGrupoSanguineo(gestacaoDTO.getGrupoSanguineo());
+                gestacaoExistente.setPesoAntesGestacao(gestacaoDTO.getPesoAntesGestacao());
+                gestacaoExistente.setRiscoGestacional(gestacaoDTO.getRiscoGestacional());
+                gestacaoExistente.setVacinaHepatiteB(gestacaoDTO.isVacinaHepatiteB());
+                gestacaoExistente.setSituacaoGestacional(gestacaoDTO.getSituacaoGestacional());
 
+                // Salve a gestação atualizada no banco de dados
+                return gestacaoRepository.save(gestacaoExistente);
+            }
+        }
+        // Se a gestação não existe, você pode lidar com isso de acordo com sua lógica
+        // de negócios.
+        // Por exemplo, lançar uma exceção ou retornar null.
+        return null;
+    }
 
     @Override
     public void deletarGestacao(Long id) {
-      Gestacao gestacao = obterGestacaoPorId(id);
-      gestacaoRepository.delete(gestacao);
+        Gestacao gestacao = obterGestacaoPorId(id);
+        gestacaoRepository.delete(gestacao);
     }
 
 }
