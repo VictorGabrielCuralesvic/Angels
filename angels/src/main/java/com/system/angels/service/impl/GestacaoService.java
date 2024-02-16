@@ -1,6 +1,7 @@
 package com.system.angels.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,22 +20,36 @@ public class GestacaoService implements iGestacaoService {
 
     @Override
     public Gestacao adicionarGestacao(GestacaoCadastroDTO gestacaoDTO) {
+        //TODO
         return null;
     }
 
     @Override
     public Gestacao obterGestacaoPorId(Long id) {
-        return null;
+        Optional<Gestacao> gestacao = gestacaoRepository.findById(id);
+
+        if(gestacao.isEmpty()) {
+            throw new RuntimeException("Não existe uma gestacão associada ao id.");
+        }
+        return gestacao.get();
     }
 
     @Override
     public Gestacao obterGestacaoPorGestante(Long gestante_id) {
-        return null;
+        Optional<Gestacao> gestacao = gestacaoRepository.findById(gestante_id);
+        if (gestacao.isEmpty()) {
+            throw new RuntimeException("Não existe uma gestação associada a essa gestante.");
+        }
+        return gestacao.get();
     }
 
     @Override
     public boolean gestacaoExiste(Long id) {
-        return gestacaoRepository.existsById(id);
+        if (id != null) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     @Override
@@ -43,16 +58,20 @@ public class GestacaoService implements iGestacaoService {
     }
 
     @Override
-    public Gestacao atualizarGestacao(AtualizarGestacaoDTO gestacaoDTO) {
-        return gestacaoRepository.save(gestacaoDTO);
-    }
+public Gestacao atualizarGestacao(AtualizarGestacaoDTO gestacaoDTO) {
+    Gestacao existingGestacao = gestacaoRepository.findById(gestacaoDTO.getId())
+            .orElseThrow(() -> new RuntimeException("Gestação não encontrada."));
+    existingGestacao.setSomeField(gestacaoDTO);
+
+
+    return gestacaoRepository.save(existingGestacao);
+}
+
 
     @Override
     public void deletarGestacao(Long id) {
-        if (id != null) {
-            gestacaoRepository.deleteById(id);
-        } else {
-            // caso nulo
-        }
+      Gestacao gestacao = obterGestacaoPorId(id);
+      gestacaoRepository.delete(gestacao);
     }
+
 }
