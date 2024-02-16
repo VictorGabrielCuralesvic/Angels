@@ -79,12 +79,12 @@ public class GestacaoService implements iGestacaoService {
 
     @Override
     public Gestacao atualizarGestacao(AtualizarGestacaoDTO gestacaoDTO) {
-        // Verifique se a gestação existe
+        
         if (gestacaoRepository.existsById(gestacaoDTO.getId())) {
-            // Encontre a gestação pelo ID
+            
             Gestacao gestacaoExistente = gestacaoRepository.findById(gestacaoDTO.getId()).orElse(null);
             if (gestacaoExistente != null) {
-                // Atualize os dados da gestação com base no DTO de atualização
+                
                 gestacaoExistente.setConsumoAlcool(gestacaoDTO.isConsumoAlcool());
                 gestacaoExistente.setFrequenciaUsoAlcool(gestacaoDTO.getFrequenciaUsoAlcool());
                 gestacaoExistente.setDataUltimaMenstruacao(gestacaoDTO.getDataUltimaMenstruacao());
@@ -100,13 +100,10 @@ public class GestacaoService implements iGestacaoService {
                 gestacaoExistente.setVacinaHepatiteB(gestacaoDTO.isVacinaHepatiteB());
                 gestacaoExistente.setSituacaoGestacional(gestacaoDTO.getSituacaoGestacional());
 
-                // Salve a gestação atualizada no banco de dados
                 return gestacaoRepository.save(gestacaoExistente);
             }
         }
-        // Se a gestação não existe, você pode lidar com isso de acordo com sua lógica
-        // de negócios.
-        // Por exemplo, lançar uma exceção ou retornar null.
+    
         return null;
     }
 
