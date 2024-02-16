@@ -59,12 +59,8 @@ public class GestacaoService implements iGestacaoService {
 
     @Override
 public Gestacao atualizarGestacao(AtualizarGestacaoDTO gestacaoDTO) {
-    Gestacao existingGestacao = gestacaoRepository.findById(gestacaoDTO.getId())
-            .orElseThrow(() -> new RuntimeException("Gestação não encontrada."));
-    existingGestacao.setSomeField(gestacaoDTO);
-
-
-    return gestacaoRepository.save(existingGestacao);
+    return null;
+    //TODO
 }
 
 
