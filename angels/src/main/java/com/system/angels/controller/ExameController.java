@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/exames")
 public class ExameController {
-
+1
     private final iExameService exameService;
 
     @Autowired
