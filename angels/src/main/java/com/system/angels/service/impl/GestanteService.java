@@ -2,7 +2,7 @@ package com.system.angels.service.impl;
 
 import com.system.angels.domain.Gestante;
 import com.system.angels.repository.GestanteRepository;
-import com.system.angels.service.iGestacaoService;
+import com.system.angels.service.iGestanteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class GestanteService implements iGestacaoService {
+public class GestanteService implements iGestanteService {
     public final GestanteRepository repositorio;
 
     public List<Gestante> listarGestantes() {
