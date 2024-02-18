@@ -1,9 +1,12 @@
 package com.system.angels.domain;
 
 import jakarta.persistence.*;
+import lombok.Data;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Data
 @Entity
 @Table(name = "Gestante")
 public class Gestante {
