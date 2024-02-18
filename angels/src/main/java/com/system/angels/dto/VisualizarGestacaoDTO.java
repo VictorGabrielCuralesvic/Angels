@@ -17,7 +17,7 @@ import lombok.Setter;
 
 public class VisualizarGestacaoDTO {
     private Long id;
-    private Long gestante_id;
+    private Gestante gestante;
     private boolean consumoAlcool;
     private int frequenciaUsoAlcool;
     private Date dataUltimaMenstruacao;
