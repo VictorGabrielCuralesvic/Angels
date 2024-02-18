@@ -1,5 +1,7 @@
 package com.system.angels.dto;
 
+import com.system.angels.enums.TipoAcompanhamento;
+
 import java.util.Date;
 
 public class AcompanhamentoDTO {
