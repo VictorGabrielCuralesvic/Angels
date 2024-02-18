@@ -16,7 +16,7 @@ import lombok.Setter;
 @Setter
 
 public class GestacaoCadastroDTO {
-    private Long gestante_id;
+    private Gestante gestante;
     private boolean consumoAlcool;
     private int frequenciaUsoAlcool;
     private Date dataUltimaMenstruacao;
@@ -26,10 +26,10 @@ public class GestacaoCadastroDTO {
     private int quantidadeCigarrosDia;
     private int usoDrogas;
     private boolean gravidezPlanejada;
-    private String grupoSanguineo;
+    private int grupoSanguineo;
     private BigDecimal pesoAntesGestacao;
     private int riscoGestacional;
     private boolean vacinaHepatiteB;
-    private String situacaoGestacional;
+    private int situacaoGestacional;
     
 }

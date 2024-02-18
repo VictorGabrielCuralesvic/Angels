@@ -1,10 +1,16 @@
 package com.system.angels.domain;
 
 import jakarta.persistence.*;
+
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "Gestacao")
 public class Gestacao {
 
@@ -57,4 +63,5 @@ public class Gestacao {
 
     @Column(nullable = false)
     private int situacaoGestacional;
+
 }
