@@ -1,4 +1,4 @@
-package com.system.angels.enums;
+package com.system.angels.domain.enums;
 
 public enum TipoAcompanhamento {
 
