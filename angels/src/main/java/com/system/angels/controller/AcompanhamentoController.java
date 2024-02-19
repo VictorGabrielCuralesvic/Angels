@@ -1,4 +1,54 @@
 package com.system.angels.controller;
 
+
+import com.system.angels.domain.Acompanhamento;
+import com.system.angels.dto.CadastroAcompanhamentoDTO;
+import com.system.angels.dto.VisualizarAcompanhamentoDTO;
+import com.system.angels.service.impl.AcompanhamentoService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/acompanhamentos")
+@RequiredArgsConstructor
 public class AcompanhamentoController {
+
+    private final AcompanhamentoService service;
+
+    @GetMapping
+    public ResponseEntity<List<Acompanhamento>> listarAcompanhamentos() {
+        List<Acompanhamento> acompanhamentos = service.listarAcompanhamentos();
+        return ResponseEntity.ok(acompanhamentos);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<VisualizarAcompanhamentoDTO> buscarAcompanhamentoPorId(@PathVariable Long id) {
+        Acompanhamento acompanhamento = service.buscarAcompanhamentoPorId(id);
+        VisualizarAcompanhamentoDTO acompanhamentoDTO = new VisualizarAcompanhamentoDTO(acompanhamento);
+        return ResponseEntity.ok(acompanhamentoDTO);
+    }
+
+    @PostMapping
+    public ResponseEntity<CadastroAcompanhamentoDTO> cadastrarAcompanhamento(@RequestBody Acompanhamento acompanhamento) {
+        CadastroAcompanhamentoDTO cadastroAcompanhamentoDTO = new CadastroAcompanhamentoDTO(acompanhamento);
+        service.registrarAcompanhamento(acompanhamento);
+        return ResponseEntity.ok(cadastroAcompanhamentoDTO);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<VisualizarAcompanhamentoDTO> atualizarAcompanhamento(@PathVariable Long id, @RequestBody Acompanhamento acompanhamentoAtualziado) {
+        Acompanhamento acompanhamento = service.atualizarAcompanhamento(id, acompanhamentoAtualziado);
+        VisualizarAcompanhamentoDTO acompanhamentoDTO = new VisualizarAcompanhamentoDTO(acompanhamento);
+        return ResponseEntity.ok(acompanhamentoDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarAcompanhamento(@PathVariable Long id) {
+        service.deletarAcompanhamento(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
