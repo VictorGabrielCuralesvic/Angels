@@ -17,7 +17,7 @@ public class DadosAtivos {
 
     @ManyToOne
     @JoinColumn(name = "gestante_id")
-    private Gestante gestante;
+    private Gestante gestante_id;
 
     @Column(nullable = false)
     private String municipio;

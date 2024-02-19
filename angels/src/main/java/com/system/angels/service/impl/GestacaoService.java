@@ -20,7 +20,7 @@ public class GestacaoService implements iGestacaoService {
     @Override
     public Gestacao adicionarGestacao(GestacaoCadastroDTO gestacaoDTO) {
         Gestacao gestacao = new Gestacao();
-        gestacao.setGestante(gestacaoDTO.getGestante());
+        gestacao.setGestante_id(gestacaoDTO.getGestante_id());
         gestacao.setConsumoAlcool(gestacaoDTO.isConsumoAlcool());
         gestacao.setFrequenciaUsoAlcool(gestacao.getFrequenciaUsoAlcool());
         gestacao.setDataUltimaMenstruacao(gestacaoDTO.getDataUltimaMenstruacao());
