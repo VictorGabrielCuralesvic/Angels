@@ -28,4 +28,8 @@ public class AcompanhamentoService implements iAcompanhamentoService {
 
         return acompanhamento.get();
     }
+
+    public Acompanhamento registrarAcompanhamento(Acompanhamento acompanhamento) {
+        return repositorio.save(acompanhamento);
+    }
 }
