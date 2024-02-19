@@ -41,7 +41,8 @@ public class GestacaoService implements iGestacaoService {
 
     @Override
     public Gestacao obterGestacaoPorId(Long id) {
-        return null;
+        Optional<Gestacao> gestacaoOptional = gestacaoRepository.findById(id);
+        return gestacaoOptional.orElse(null);
     }
 
     @Override
@@ -51,21 +52,41 @@ public class GestacaoService implements iGestacaoService {
 
     @Override
     public boolean gestacaoExiste(Long id) {
-        return false;
+        return gestacaoRepository.existsById(id);
     }
 
     @Override
     public List<Gestacao> obterTodasGestacoes() {
-        return null;
+        return gestacaoRepository.findAll();
     }
 
     @Override
     public Gestacao atualizarGestacao(AtualizarGestacaoDTO gestacaoDTO) {
-        return null;
+        Optional<Gestacao> gestacaoOptional = gestacaoRepository.findById(gestacaoDTO.getId());
+        if (gestacaoOptional.isPresent()) {
+            Gestacao gestacao = gestacaoOptional.get();
+            gestacao.setConsumoAlcool(gestacaoDTO.isConsumoAlcool());
+            gestacao.setFrequenciaUsoAlcool(gestacaoDTO.getFrequenciaUsoAlcool());
+            gestacao.setDataUltimaMenstruacao(gestacaoDTO.getDataUltimaMenstruacao());
+            gestacao.setDataInicioGestacao(gestacaoDTO.getDataInicioGestacao());
+            gestacao.setFatorRh(gestacaoDTO.getFatorRh());
+            gestacao.setFuma(gestacaoDTO.isFuma());
+            gestacao.setQuantidadeCigarrosDia(gestacaoDTO.getQuantidadeCigarrosDia());
+            gestacao.setUsoDrogas(gestacaoDTO.getUsoDrogas());
+            gestacao.setGravidezPlanejada(gestacaoDTO.isGravidezPlanejada());
+            gestacao.setGrupoSanguineo(gestacaoDTO.getGrupoSanguineo());
+            gestacao.setPesoAntesGestacao(gestacaoDTO.getPesoAntesGestacao());
+            gestacao.setRiscoGestacional(gestacaoDTO.getRiscoGestacional());
+            gestacao.setVacinaHepatiteB(gestacaoDTO.isVacinaHepatiteB());
+            gestacao.setSituacaoGestacional(gestacaoDTO.getSituacaoGestacional());
+            return gestacaoRepository.save(gestacao);
+        } else {
+            return null;
+        }
     }
 
     @Override
     public void deletarGestacao(Long id) {
-
+        gestacaoRepository.deleteById(id);
     }
 }
