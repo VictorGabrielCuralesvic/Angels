@@ -37,4 +37,19 @@ public class AcompanhamentoService implements iAcompanhamentoService {
         Acompanhamento acompanhamento = buscarAcompanhamentoPorId(id);
         repositorio.delete(acompanhamento);
     }
+
+    public Acompanhamento atualizarAcompanhamento(Long id, Acompanhamento acompanhamentoAtualizado) {
+        Acompanhamento acompanhamento = buscarAcompanhamentoPorId(id);
+        acompanhamento.setDataAcompanhamento(acompanhamentoAtualizado.getDataAcompanhamento());
+        acompanhamento.setRealizadoPor(acompanhamentoAtualizado.getRealizadoPor());
+        acompanhamento.setPesoAtual(acompanhamentoAtualizado.getPesoAtual());
+        acompanhamento.setIdadeGestacional(acompanhamentoAtualizado.getIdadeGestacional());
+        acompanhamento.setPressaoArterial(acompanhamentoAtualizado.getPressaoArterial());
+        acompanhamento.setBatimentosCardiacosFeto(acompanhamentoAtualizado.getBatimentosCardiacosFeto());
+        acompanhamento.setAlturaUterina(acompanhamentoAtualizado.getAlturaUterina());
+        acompanhamento.setTipo(acompanhamentoAtualizado.getTipo());
+
+        return repositorio.save(acompanhamento);
+    }
+
 }
