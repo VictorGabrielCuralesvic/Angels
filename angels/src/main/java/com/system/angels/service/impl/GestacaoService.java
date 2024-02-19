@@ -30,7 +30,7 @@ public class GestacaoService implements iGestacaoService {
         gestacao.setQuantidadeCigarrosDia(gestacaoDTO.getQuantidadeCigarrosDia());
         gestacao.setUsoDrogas(gestacaoDTO.getUsoDrogas());
         gestacao.setGravidezPlanejada(gestacaoDTO.isGravidezPlanejada());
-        gestacao.setGrupoSanguineo(Integer.parseInt(gestacaoDTO.getGrupoSanguineo()));
+        gestacao.setGrupoSanguineo(gestacaoDTO.getGrupoSanguineo());
         gestacao.setPesoAntesGestacao(gestacaoDTO.getPesoAntesGestacao());
         gestacao.setRiscoGestacional(gestacaoDTO.getRiscoGestacional());
         gestacao.setVacinaHepatiteB(gestacaoDTO.isVacinaHepatiteB());
