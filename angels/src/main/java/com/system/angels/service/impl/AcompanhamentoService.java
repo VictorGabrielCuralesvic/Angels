@@ -32,4 +32,9 @@ public class AcompanhamentoService implements iAcompanhamentoService {
     public Acompanhamento registrarAcompanhamento(Acompanhamento acompanhamento) {
         return repositorio.save(acompanhamento);
     }
+
+    public void deletarAcompanhamento(Long id) {
+        Acompanhamento acompanhamento = buscarAcompanhamentoPorId(id);
+        repositorio.delete(acompanhamento);
+    }
 }
