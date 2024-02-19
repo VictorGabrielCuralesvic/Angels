@@ -24,4 +24,10 @@ public class AcompanhamentoController {
         return ResponseEntity.ok(acompanhamentos);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<VisualizarAcompanhamentoDTO> buscarAcompanhamentoPorId(@PathVariable Long id) {
+        Acompanhamento acompanhamento = service.buscarAcompanhamentoPorId(id);
+        VisualizarAcompanhamentoDTO acompanhamentoDTO = new VisualizarAcompanhamentoDTO(acompanhamento);
+        return ResponseEntity.ok(acompanhamentoDTO);
+    }
 }
