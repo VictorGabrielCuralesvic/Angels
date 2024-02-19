@@ -44,4 +44,11 @@ public class AcompanhamentoController {
         VisualizarAcompanhamentoDTO acompanhamentoDTO = new VisualizarAcompanhamentoDTO(acompanhamento);
         return ResponseEntity.ok(acompanhamentoDTO);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarAcompanhamento(@PathVariable Long id) {
+        service.deletarAcompanhamento(id);
+        return ResponseEntity.noContent().build();
+    }
+
 }
