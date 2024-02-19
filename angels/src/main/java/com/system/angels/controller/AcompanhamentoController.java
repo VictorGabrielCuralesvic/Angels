@@ -37,4 +37,11 @@ public class AcompanhamentoController {
         service.registrarAcompanhamento(acompanhamento);
         return ResponseEntity.ok(cadastroAcompanhamentoDTO);
     }
+
+    @PutMapping("{id}")
+    public ResponseEntity<VisualizarAcompanhamentoDTO> atualizarAcompanhamento(@PathVariable Long id, @RequestBody Acompanhamento acompanhamentoAtualziado) {
+        Acompanhamento acompanhamento = service.atualizarAcompanhamento(id, acompanhamentoAtualziado);
+        VisualizarAcompanhamentoDTO acompanhamentoDTO = new VisualizarAcompanhamentoDTO(acompanhamento);
+        return ResponseEntity.ok(acompanhamentoDTO);
+    }
 }
