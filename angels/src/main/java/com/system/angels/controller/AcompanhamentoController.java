@@ -30,4 +30,11 @@ public class AcompanhamentoController {
         VisualizarAcompanhamentoDTO acompanhamentoDTO = new VisualizarAcompanhamentoDTO(acompanhamento);
         return ResponseEntity.ok(acompanhamentoDTO);
     }
+
+    @PostMapping
+    public ResponseEntity<CadastroAcompanhamentoDTO> cadastrarAcompanhamento(@RequestBody Acompanhamento acompanhamento) {
+        CadastroAcompanhamentoDTO cadastroAcompanhamentoDTO = new CadastroAcompanhamentoDTO(acompanhamento);
+        service.registrarAcompanhamento(acompanhamento);
+        return ResponseEntity.ok(cadastroAcompanhamentoDTO);
+    }
 }
