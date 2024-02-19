@@ -19,4 +19,13 @@ public class AcompanhamentoService implements iAcompanhamentoService {
         return repositorio.findAll();
     }
 
+    public Acompanhamento buscarAcompanhamentoPorId(Long id) throws RuntimeException {
+        Optional<Acompanhamento> acompanhamento = repositorio.findById(id);
+
+        if (acompanhamento.isEmpty()) {
+            throw new RuntimeException("Não existe um acompanhamento associado a esse id.");
+        }
+
+        return acompanhamento.get();
+    }
 }
