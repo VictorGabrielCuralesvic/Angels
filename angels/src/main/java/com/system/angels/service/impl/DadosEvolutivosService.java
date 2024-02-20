@@ -1,6 +1,7 @@
 package com.system.angels.service.impl;
 
 import com.system.angels.domain.DadosEvolutivos;
+import com.system.angels.domain.Gestante;
 import com.system.angels.repository.DadosEvolutivosRepository;
 import com.system.angels.service.iDadosEvolutivosService;
 import lombok.RequiredArgsConstructor;
@@ -17,6 +18,11 @@ public class DadosEvolutivosService implements iDadosEvolutivosService {
 
     public List<DadosEvolutivos> listarDadosEvolutivos() {
         return repositorio.findAll();
+    }
+
+    public List<DadosEvolutivos> listarDadosEvolutivosPorGestante(Gestante gestante) {
+        List<DadosEvolutivos> dadosEvolutivos = repositorio.findDadosEvolutivosByGestante_id(gestante.getId());
+        return dadosEvolutivos;
     }
 
     public DadosEvolutivos buscarDadosEvolutivosPorId(Long id) {
