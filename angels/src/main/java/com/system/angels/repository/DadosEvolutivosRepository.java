@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface DadosEvolutivosRepository extends JpaRepository<DadosEvolutivos, Long> {
+    DadosEvolutivos findDadosEvolutivosByGestante_id(Long id);
 }
