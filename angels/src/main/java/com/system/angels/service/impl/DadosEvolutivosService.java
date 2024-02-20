@@ -25,6 +25,14 @@ public class DadosEvolutivosService implements iDadosEvolutivosService {
         return dadosEvolutivos;
     }
 
+    public DadosEvolutivos ultimosDadosEvolutivosPorGestante(Gestante gestante) {
+        List<DadosEvolutivos> listaDeDadosEvolutivos = listarDadosEvolutivos();
+
+        DadosEvolutivos ultimosDadosEvolutivos = listaDeDadosEvolutivos.get(listaDeDadosEvolutivos.size() - 1);
+
+        return ultimosDadosEvolutivos;
+    }
+
     public DadosEvolutivos buscarDadosEvolutivosPorId(Long id) {
         Optional<DadosEvolutivos> dadosEvolutivos = repositorio.findById(id);
 
