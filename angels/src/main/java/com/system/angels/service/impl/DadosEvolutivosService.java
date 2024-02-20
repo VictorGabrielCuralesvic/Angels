@@ -33,4 +33,46 @@ public class DadosEvolutivosService implements iDadosEvolutivosService {
         return repositorio.save(dadosEvolutivos);
     }
 
+    public DadosEvolutivos atualizarDadosEvolutivos(DadosEvolutivos dadosEvolutivosAtualizados) {
+        DadosEvolutivos dadosEvolutivos = buscarDadosEvolutivosPorId(dadosEvolutivosAtualizados.getId());
+
+        dadosEvolutivos.setMunicipio(dadosEvolutivosAtualizados.getMunicipio());
+        dadosEvolutivos.setDiagnosticoDesnutricao(dadosEvolutivosAtualizados.getDiagnosticoDesnutricao());
+        dadosEvolutivos.setEnergiaEletricaDomicilio(dadosEvolutivosAtualizados.isEnergiaEletricaDomicilio());
+        dadosEvolutivos.setEscolaridade(dadosEvolutivosAtualizados.getEscolaridade());
+        dadosEvolutivos.setTipoMoradia(dadosEvolutivosAtualizados.getTipoMoradia());
+        dadosEvolutivos.setMoradiaRedeEsgoto(dadosEvolutivosAtualizados.isMoradiaRedeEsgoto());
+        dadosEvolutivos.setRendaFamiliar(dadosEvolutivosAtualizados.getRendaFamiliar());
+        dadosEvolutivos.setTratamentoAgua(dadosEvolutivosAtualizados.isTratamentoAgua());
+        dadosEvolutivos.setAmamentacao(dadosEvolutivosAtualizados.isAmamentacao());
+        dadosEvolutivos.setChefeFamilia(dadosEvolutivosAtualizados.getChefeFamilia());
+        dadosEvolutivos.setDataUltimaGestacao(dadosEvolutivosAtualizados.getDataUltimaGestacao());
+        dadosEvolutivos.setEmRisco(dadosEvolutivosAtualizados.isEmRisco());
+        dadosEvolutivos.setEstadoCivil(dadosEvolutivosAtualizados.getEstadoCivil());
+        dadosEvolutivos.setQuantidadeAbortos(dadosEvolutivosAtualizados.getQuantidadeAbortos());
+        dadosEvolutivos.setQuantidadeFilhosVivos(dadosEvolutivosAtualizados.getQuantidadeFilhosVivos());
+        dadosEvolutivos.setQuantidadeGemelares(dadosEvolutivosAtualizados.getQuantidadeGemelares());
+        dadosEvolutivos.setQuantidadeGestacao(dadosEvolutivosAtualizados.getQuantidadeGestacao());
+        dadosEvolutivos.setQuantidadeNascidosMortos(dadosEvolutivosAtualizados.getQuantidadeNascidosMortos());
+        dadosEvolutivos.setQuantidadeNascidosVivos(dadosEvolutivosAtualizados.getQuantidadeNascidosVivos());
+        dadosEvolutivos.setQuantidadeObitosSemana1(dadosEvolutivosAtualizados.getQuantidadeObitosSemana1());
+        dadosEvolutivos.setQuantidadeObitosAposSemana1(dadosEvolutivosAtualizados.getQuantidadeObitosAposSemana1());
+        dadosEvolutivos.setQuantidadePartos(dadosEvolutivosAtualizados.getQuantidadePartos());
+        dadosEvolutivos.setQuantidadePartosCesarios(dadosEvolutivosAtualizados.getQuantidadePartosCesarios());
+        dadosEvolutivos.setQuantidadePartosVaginais(dadosEvolutivosAtualizados.getQuantidadePartosVaginais());
+        dadosEvolutivos.setQuantidadeRnPeso2500_4000(dadosEvolutivosAtualizados.getQuantidadeRnPeso2500_4000());
+        dadosEvolutivos.setQuantidadeRnPesoMaior4000(dadosEvolutivosAtualizados.getQuantidadeRnPesoMaior4000());
+        dadosEvolutivos.setQuantidadeRnPesoMenor2500(dadosEvolutivosAtualizados.getQuantidadeRnPesoMenor2500());
+        dadosEvolutivos.setHipertensao(dadosEvolutivosAtualizados.isHipertensao());
+        dadosEvolutivos.setDiabetes(dadosEvolutivosAtualizados.isDiabetes());
+        dadosEvolutivos.setCirurgiaPelvica(dadosEvolutivosAtualizados.isCirurgiaPelvica());
+        dadosEvolutivos.setInfeccaoUrinaria(dadosEvolutivosAtualizados.isInfeccaoUrinaria());
+        dadosEvolutivos.setMaFormacaoCongenita(dadosEvolutivosAtualizados.isMaFormacaoCongenita());
+        dadosEvolutivos.setFamiliarGemeos(dadosEvolutivosAtualizados.isFamiliarGemeos());
+        dadosEvolutivos.setContato(dadosEvolutivosAtualizados.getContato());
+        dadosEvolutivos.setContatoEmergencia(dadosEvolutivosAtualizados.getContatoEmergencia());
+
+        return registrarDadosEvolutivos(dadosEvolutivos);
+    }
+
 }
