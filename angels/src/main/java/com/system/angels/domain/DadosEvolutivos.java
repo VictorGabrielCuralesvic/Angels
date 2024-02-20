@@ -65,6 +65,9 @@ public class DadosEvolutivos {
     private int quantidadeFilhosVivos;
 
     @Column(nullable = false)
+    private int quantidadeGemelares;
+
+    @Column(nullable = false)
     private int quantidadeGestacao;
 
     @Column(nullable = false)
