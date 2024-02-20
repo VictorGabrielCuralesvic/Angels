@@ -1,8 +1,10 @@
 package com.system.angels.controller;
 
+import com.system.angels.domain.DadosEvolutivos;
 import com.system.angels.domain.Gestante;
 import com.system.angels.dto.GestanteCadastroDTO;
 import com.system.angels.dto.VisualizarGestanteDTO;
+import com.system.angels.service.impl.DadosEvolutivosService;
 import com.system.angels.service.impl.GestanteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class GestanteController {
     private final GestanteService service;
+    private final DadosEvolutivosService dadosEvolutivosService;
 
     @GetMapping
     public ResponseEntity<List<Gestante>> listarGestantes() {
@@ -25,14 +28,18 @@ public class GestanteController {
     @GetMapping("/{id}")
     public ResponseEntity<VisualizarGestanteDTO> buscarGestantePorId(@PathVariable Long id) {
         Gestante gestante = service.buscarGestantePorId(id);
-        VisualizarGestanteDTO gestanteDTO = new VisualizarGestanteDTO(gestante);
+        DadosEvolutivos dadosEvolutivos = dadosEvolutivosService.ultimosDadosEvolutivosPorGestante(gestante);
+        VisualizarGestanteDTO gestanteDTO = new VisualizarGestanteDTO(gestante, dadosEvolutivos);
+
         return ResponseEntity.ok(gestanteDTO);
     }
 
     @GetMapping("/cpf/{cpf}")
     public ResponseEntity<VisualizarGestanteDTO> buscarGestantePorCpf(@PathVariable String cpf) {
         Gestante gestante = service.buscarGestantePorCpf(cpf);
-        VisualizarGestanteDTO gestanteDTO = new VisualizarGestanteDTO(gestante);
+        DadosEvolutivos dadosEvolutivos = dadosEvolutivosService.ultimosDadosEvolutivosPorGestante(gestante);
+        VisualizarGestanteDTO gestanteDTO = new VisualizarGestanteDTO(gestante, dadosEvolutivos);
+
         return ResponseEntity.ok(gestanteDTO);
     }
 
@@ -46,7 +53,9 @@ public class GestanteController {
     @PutMapping("{id}")
     public ResponseEntity<VisualizarGestanteDTO> atualizarGestante(@PathVariable Long id, @RequestBody Gestante gestanteAtualizada) {
         Gestante gestante = service.atualizarGestante(id, gestanteAtualizada);
-        VisualizarGestanteDTO gestanteDTO = new VisualizarGestanteDTO(gestante);
+        DadosEvolutivos dadosEvolutivos = dadosEvolutivosService.ultimosDadosEvolutivosPorGestante(gestante);
+        VisualizarGestanteDTO gestanteDTO = new VisualizarGestanteDTO(gestante, dadosEvolutivos);
+
         return ResponseEntity.ok(gestanteDTO);
     }
 
