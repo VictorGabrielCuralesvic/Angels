@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -16,5 +17,15 @@ public class DadosEvolutivosService implements iDadosEvolutivosService {
 
     public List<DadosEvolutivos> listarDadosEvolutivos() {
         return repositorio.findAll();
+    }
+
+    public DadosEvolutivos buscarDadosEvolutivosPorId(Long id) {
+        Optional<DadosEvolutivos> dadosEvolutivos = repositorio.findById(id);
+
+        if (dadosEvolutivos.isEmpty()) {
+            throw new RuntimeException("Não foram encontrados dados evolutivos associados a esse ID.");
+        }
+
+        return dadosEvolutivos.get();
     }
 }
