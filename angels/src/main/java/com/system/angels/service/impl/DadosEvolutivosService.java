@@ -28,4 +28,9 @@ public class DadosEvolutivosService implements iDadosEvolutivosService {
 
         return dadosEvolutivos.get();
     }
+
+    public DadosEvolutivos registrarDadosEvolutivos(DadosEvolutivos dadosEvolutivos) {
+        return repositorio.save(dadosEvolutivos);
+    }
+
 }
