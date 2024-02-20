@@ -75,4 +75,9 @@ public class DadosEvolutivosService implements iDadosEvolutivosService {
         return registrarDadosEvolutivos(dadosEvolutivos);
     }
 
+    public void deletarDadosEvolutivos(Long id) {
+        DadosEvolutivos dadosEvolutivos = buscarDadosEvolutivosPorId(id);
+
+        repositorio.delete(dadosEvolutivos);
+    }
 }
