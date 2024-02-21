@@ -16,8 +16,8 @@ public class DadosEvolutivos {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "gestante_id")
-    private Gestante gestante_id;
+    @JoinColumn(name = "gestante_id", nullable = false)
+    private Gestante gestante;
 
     @Column(nullable = false)
     private String municipio;
