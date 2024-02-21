@@ -16,7 +16,7 @@ import java.util.Date;
 @Setter
 public class CadastrarDadosEvolutivosDTO {
 
-    private Gestante gestante_id;
+    private Gestante gestante;
     private String municipio;
     private int diagnosticoDesnutricao;
     private boolean energiaEletricaDomicilio;
@@ -53,7 +53,7 @@ public class CadastrarDadosEvolutivosDTO {
     private String contatoEmergencia;
 
     public CadastrarDadosEvolutivosDTO(DadosEvolutivos dadosEvolutivos) {
-        this.gestante_id = dadosEvolutivos.getGestante_id();
+        this.gestante = dadosEvolutivos.getGestante();
         this.municipio = dadosEvolutivos.getMunicipio();
         this.diagnosticoDesnutricao = dadosEvolutivos.getDiagnosticoDesnutricao();
         this.energiaEletricaDomicilio = dadosEvolutivos.isEnergiaEletricaDomicilio();
