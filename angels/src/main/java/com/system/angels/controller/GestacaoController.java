@@ -9,16 +9,24 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.system.angels.domain.Gestacao;
-import com.system.angels.domain.Gestante;
+import com.system.angels.dto.AtualizarGestacaoDTO;
 import com.system.angels.dto.GestacaoCadastroDTO;
 import com.system.angels.dto.VisualizarGestacaoDTO;
-import com.system.angels.service.impl.GestacaoService;
+import com.system.angels.service.iGestacaoService;
 
+@RestController
+@RequestMapping("/gestacoes")
 public class GestacaoController {
 
-    private final GestacaoService service;
+    private final iGestacaoService service;
+
+    public GestacaoController(iGestacaoService service) {
+        this.service = service;
+    }
 
     @GetMapping
     public ResponseEntity<List<Gestacao>> obterTodasGestacoes() {
@@ -27,18 +35,22 @@ public class GestacaoController {
     }
 
     @GetMapping("/{id}")
-    //TODO
+    public ResponseEntity<VisualizarGestacaoDTO> obterGestacaoPorId(@PathVariable Long id) {
+        VisualizarGestacaoDTO gestacaoDTO = service.obterGestacaoPorId(id);
+        return ResponseEntity.ok(gestacaoDTO);
+    }
 
     @PostMapping
-    public ResponseEntity<Gestacao> adicionarGestacao(@RequestBody GestacaoCadastroDTO gestacaoDTO) {
-        Gestacao gestacao = service.adicionarGestacao(gestacaoDTO);
+    public ResponseEntity<GestacaoCadastroDTO> adicionarGestacao(@RequestBody GestacaoCadastroDTO gestacaoDTO) {
+        GestacaoCadastroDTO gestacao = service.adicionarGestacao(gestacaoDTO);
         return ResponseEntity.ok(gestacao);
     }
 
-
     @PutMapping("/{id}")
-    //TODO
-    
+    public ResponseEntity<AtualizarGestacaoDTO> atualizarGestacao(@PathVariable Long id, @RequestBody AtualizarGestacaoDTO atualizarGestacaoDTO) {
+        AtualizarGestacaoDTO gestacaoDTO = service.atualizarGestacao(id, atualizarGestacaoDTO);
+        return ResponseEntity.ok(gestacaoDTO);
+    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletarGestacao(@PathVariable Long id) {
