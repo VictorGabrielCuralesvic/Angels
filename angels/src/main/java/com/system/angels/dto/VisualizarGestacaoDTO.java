@@ -3,6 +3,7 @@ package com.system.angels.dto;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.system.angels.domain.Gestacao;
 import com.system.angels.domain.Gestante;
 
 import lombok.AllArgsConstructor;
@@ -14,10 +15,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-
 public class VisualizarGestacaoDTO {
     private Long id;
-    private Gestante gestante;
+    private Gestante gestante_id;
     private boolean consumoAlcool;
     private int frequenciaUsoAlcool;
     private Date dataUltimaMenstruacao;
@@ -32,5 +32,12 @@ public class VisualizarGestacaoDTO {
     private int riscoGestacional;
     private boolean vacinaHepatiteB;
     private int situacaoGestacional;
+
+    public VisualizarGestacaoDTO(Gestacao gestacao) {
+        this.id = gestacao.getId();
+        this.gestante_id = gestacao.getGestante_id();
+        this.consumoAlcool = gestacao.isConsumoAlcool();
+        this.frequenciaUsoAlcool = gestacao.getFrequenciaUsoAlcool();
+    }
 
 }

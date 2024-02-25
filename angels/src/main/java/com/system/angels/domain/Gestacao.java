@@ -20,7 +20,7 @@ public class Gestacao {
 
     @ManyToOne
     @JoinColumn(name = "gestante_id", nullable = false)
-    private Gestante gestante;
+    private Gestante gestante_id;
 
     @Column(nullable = false)
     private boolean consumoAlcool;

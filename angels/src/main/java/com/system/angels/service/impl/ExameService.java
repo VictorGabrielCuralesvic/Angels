@@ -1,6 +1,5 @@
 package com.system.angels.service.impl;
 
-import com.system.angels.domain.Acompanhamento;
 import com.system.angels.domain.Exame;
 import com.system.angels.dto.AtualizarExameDTO;
 import com.system.angels.dto.ExameDTO;
@@ -23,15 +22,14 @@ public class ExameService implements iExameService {
     public ExameDTO criarExame(ExameDTO exameDTO) {
         Exame exame = new Exame();
         // associar exame ao acompanhamento
-        Acompanhamento acompanhamento = exameDTO.getAcompanhamentoId();
-        exame.setAcompanhamento(acompanhamento);
+        exame.setAcompanhamentoId(exameDTO.getAcompanhamentoId());
         // --
         exame.setTipo(exameDTO.getTipo());
         exame.setResultado(exameDTO.getResultado());
         exame.setObservacao(exameDTO.getObservacao());
         exame = exameRepository.save(exame);
         ExameDTO createdExameDTO = new ExameDTO();
-        createdExameDTO.setAcompanhamentoId(exame.getAcompanhamento());
+        createdExameDTO.setAcompanhamentoId(exame.getAcompanhamentoId());
         createdExameDTO.setTipo(exame.getTipo());
         createdExameDTO.setResultado(exame.getResultado());
         createdExameDTO.setObservacao(exame.getObservacao());
@@ -45,7 +43,7 @@ public class ExameService implements iExameService {
             Exame exame = optionalExame.get();
             VisualizarExameDTO visualizarExameDTO = new VisualizarExameDTO();
             visualizarExameDTO.setId(exame.getId());
-            visualizarExameDTO.setAcompanhamentoId(exame.getAcompanhamento());
+            visualizarExameDTO.setAcompanhamentoId(exame.getAcompanhamentoId());
             visualizarExameDTO.setTipo(exame.getTipo());
             visualizarExameDTO.setResultado(exame.getResultado());
             visualizarExameDTO.setObservacao(exame.getObservacao());

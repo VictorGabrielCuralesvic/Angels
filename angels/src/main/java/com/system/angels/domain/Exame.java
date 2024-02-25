@@ -1,7 +1,9 @@
 package com.system.angels.domain;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
+@Data
 @Entity
 @Table(name = "Exame")
 public class Exame {
@@ -11,7 +13,7 @@ public class Exame {
 
     @ManyToOne
     @JoinColumn(name = "acompanhamento_id", nullable = false)
-    private Acompanhamento acompanhamento;
+    private Acompanhamento acompanhamentoId;
 
     @Column(nullable = false)
     private String tipo;
@@ -22,43 +24,4 @@ public class Exame {
     @Column
     private String observacao;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Acompanhamento getAcompanhamento() {
-        return acompanhamento;
-    }
-
-    public void setAcompanhamento(Acompanhamento acompanhamento) {
-        this.acompanhamento = acompanhamento;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public String getResultado() {
-        return resultado;
-    }
-
-    public void setResultado(String resultado) {
-        this.resultado = resultado;
-    }
-
-    public String getObservacao() {
-        return observacao;
-    }
-
-    public void setObservacao(String observacao) {
-        this.observacao = observacao;
-    }
 }
