@@ -2,8 +2,6 @@ package com.system.angels.controller;
 
 import com.system.angels.domain.DadosEvolutivos;
 import com.system.angels.domain.Gestante;
-import com.system.angels.dto.CadastrarDadosEvolutivosDTO;
-import com.system.angels.dto.GestanteCadastroDTO;
 import com.system.angels.dto.GestanteEDadosEvolutivosDTO;
 import com.system.angels.dto.VisualizarGestanteDTO;
 import com.system.angels.service.impl.DadosEvolutivosService;
@@ -46,10 +44,9 @@ public class GestanteController {
     }
 
     @PostMapping
-    public ResponseEntity<GestanteEDadosEvolutivosDTO> cadastrarGestante(@RequestBody Gestante gestante, @RequestBody DadosEvolutivos dadosEvolutivos) {
-        GestanteCadastroDTO gestanteDTO = new GestanteCadastroDTO(gestante);
-        CadastrarDadosEvolutivosDTO dadosEvolutivosDTO = new CadastrarDadosEvolutivosDTO(dadosEvolutivos);
-        GestanteEDadosEvolutivosDTO gestanteEDadosEvolutivosDTO = new GestanteEDadosEvolutivosDTO(gestanteDTO, dadosEvolutivosDTO);
+    public ResponseEntity<GestanteEDadosEvolutivosDTO> cadastrarGestante(@RequestBody GestanteEDadosEvolutivosDTO gestanteEDadosEvolutivosDTO) {
+        Gestante gestante = gestanteEDadosEvolutivosDTO.getGestante();
+        DadosEvolutivos dadosEvolutivos = gestanteEDadosEvolutivosDTO.getDadosEvolutivos();
 
         service.registrarGestante(gestante);
         dadosEvolutivosService.registrarDadosEvolutivos(dadosEvolutivos);
