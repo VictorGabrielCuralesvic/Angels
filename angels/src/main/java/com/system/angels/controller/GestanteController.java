@@ -2,7 +2,9 @@ package com.system.angels.controller;
 
 import com.system.angels.domain.DadosEvolutivos;
 import com.system.angels.domain.Gestante;
+import com.system.angels.dto.CadastrarDadosEvolutivosDTO;
 import com.system.angels.dto.GestanteCadastroDTO;
+import com.system.angels.dto.GestanteEDadosEvolutivosDTO;
 import com.system.angels.dto.VisualizarGestanteDTO;
 import com.system.angels.service.impl.DadosEvolutivosService;
 import com.system.angels.service.impl.GestanteService;
@@ -44,10 +46,15 @@ public class GestanteController {
     }
 
     @PostMapping
-    public ResponseEntity<GestanteCadastroDTO> cadastrarGestante(@RequestBody Gestante gestante) {
-        GestanteCadastroDTO gestanteCadastroDTO = new GestanteCadastroDTO(gestante);
+    public ResponseEntity<GestanteEDadosEvolutivosDTO> cadastrarGestante(@RequestBody Gestante gestante, @RequestBody DadosEvolutivos dadosEvolutivos) {
+        GestanteCadastroDTO gestanteDTO = new GestanteCadastroDTO(gestante);
+        CadastrarDadosEvolutivosDTO dadosEvolutivosDTO = new CadastrarDadosEvolutivosDTO(dadosEvolutivos);
+        GestanteEDadosEvolutivosDTO gestanteEDadosEvolutivosDTO = new GestanteEDadosEvolutivosDTO(gestanteDTO, dadosEvolutivosDTO);
+
         service.registrarGestante(gestante);
-        return ResponseEntity.ok(gestanteCadastroDTO);
+        dadosEvolutivosService.registrarDadosEvolutivos(dadosEvolutivos);
+
+        return ResponseEntity.ok(gestanteEDadosEvolutivosDTO);
     }
 
     @PutMapping("{id}")
