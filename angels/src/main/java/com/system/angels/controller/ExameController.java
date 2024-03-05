@@ -1,48 +1,76 @@
 package com.system.angels.controller;
 
+import com.system.angels.domain.Acompanhamento;
+import com.system.angels.domain.Exame;
+import com.system.angels.domain.Gestacao;
 import com.system.angels.dto.AtualizarExameDTO;
 import com.system.angels.dto.ExameDTO;
 import com.system.angels.dto.RemoverExameDTO;
 import com.system.angels.dto.VisualizarExameDTO;
 import com.system.angels.service.iExameService;
+import com.system.angels.service.impl.AcompanhamentoService;
+import com.system.angels.service.impl.ExameService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/exames")
 public class ExameController {
 
-    private final iExameService exameService;
+    private final ExameService exameService;
+
+    private final AcompanhamentoService acompanhamentoService;
 
     @Autowired
-    public ExameController(iExameService exameService) {
+    public ExameController(ExameService exameService, AcompanhamentoService acompanhamentoService) {
         this.exameService = exameService;
+        this.acompanhamentoService = acompanhamentoService;
     }
 
-    @PostMapping
-    public ResponseEntity<ExameDTO> criarExame(@RequestBody ExameDTO exameDTO) {
-        ExameDTO createdExameDTO = exameService.criarExame(exameDTO);
-        return new ResponseEntity<>(createdExameDTO, HttpStatus.CREATED);
+    @PostMapping("/{acompanhamentoId}")
+    public ResponseEntity<ExameDTO> criarExame(@PathVariable Long acompanhamentoId, @RequestBody ExameDTO exameDTO) {
+        Exame exame = new Exame();
+        Acompanhamento acompanhamento = acompanhamentoService.buscarAcompanhamentoPorId(acompanhamentoId);
+
+        exame.setAcompanhamento(acompanhamento);
+        exame.setTipo(exameDTO.getTipo());
+        exame.setResultado(exameDTO.getResultado());
+        exame.setObservacao(exameDTO.getObservacao());
+
+        Exame adicionaExame = exameService.criarExame(exame);
+
+        ExameDTO adicionaExameDTO = new ExameDTO(adicionaExame);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(adicionaExameDTO);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<VisualizarExameDTO> visualizarExame(@PathVariable Long id) {
-        VisualizarExameDTO visualizarExameDTO = exameService.visualizarExame(id);
-        return new ResponseEntity<>(visualizarExameDTO, HttpStatus.OK);
+    public ResponseEntity<VisualizarExameDTO> buscarExamePorId(@PathVariable Long id) {
+        Exame exame = exameService.buscarExamePorId(id);
+        VisualizarExameDTO visualizarExameDTO = new VisualizarExameDTO(exame);
+        return ResponseEntity.ok(visualizarExameDTO);
     }
 
-    @PutMapping("/atualizar-exame/{id}")
-    public ResponseEntity<AtualizarExameDTO> atualizarExame(@RequestBody AtualizarExameDTO atualizarExameDTO) {
-        AtualizarExameDTO atualizadoExameDTO = exameService.atualizarExame(atualizarExameDTO);
-        return new ResponseEntity<>(atualizadoExameDTO, HttpStatus.OK);
+    @GetMapping
+    public ResponseEntity<List<Exame>> obterTodosExames() {
+        List<Exame> exames = exameService.obterTodosExames();
+        return ResponseEntity.ok(exames);
     }
+
+    //PutMapping("/{id}")
+    //public ResponseEntity<AtualizarExameDTO> atualizarExame(@PathVariable Long id, @RequestBody AtualizarExameDTO atualizarExameDTO) {
+    //    Exame exame = exameService.
+    //    AtualizarExameDTO atualizadoExameDTO = exameService.atualizarExame(atualizarExameDTO);
+    //    return new ResponseEntity<>(atualizadoExameDTO, HttpStatus.OK);
+    //}
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> removerExame(@PathVariable Long id) {
-        RemoverExameDTO removerExameDTO = new RemoverExameDTO(id);
-        exameService.removerExame(removerExameDTO);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    public ResponseEntity<Void> deleteExame(@PathVariable Long id) {
+        exameService.deleteExame(id);
+        return ResponseEntity.noContent().build();
     }
 }

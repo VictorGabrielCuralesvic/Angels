@@ -41,4 +41,5 @@ public class Acompanhamento {
 
     @Column(nullable = false)
     private String tipo;
+
 }

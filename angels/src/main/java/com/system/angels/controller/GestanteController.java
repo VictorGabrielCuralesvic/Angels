@@ -47,6 +47,7 @@ public class GestanteController {
     public ResponseEntity<GestanteEDadosEvolutivosDTO> cadastrarGestante(@RequestBody GestanteEDadosEvolutivosDTO gestanteEDadosEvolutivosDTO) {
         Gestante gestante = gestanteEDadosEvolutivosDTO.getGestante();
         DadosEvolutivos dadosEvolutivos = gestanteEDadosEvolutivosDTO.getDadosEvolutivos();
+        dadosEvolutivos.setGestante(gestante);
 
         service.registrarGestante(gestante);
         dadosEvolutivosService.registrarDadosEvolutivos(dadosEvolutivos);

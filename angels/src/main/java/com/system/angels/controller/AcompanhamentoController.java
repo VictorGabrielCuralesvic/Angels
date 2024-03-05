@@ -2,9 +2,11 @@ package com.system.angels.controller;
 
 
 import com.system.angels.domain.Acompanhamento;
+import com.system.angels.domain.Gestante;
 import com.system.angels.dto.CadastroAcompanhamentoDTO;
 import com.system.angels.dto.VisualizarAcompanhamentoDTO;
 import com.system.angels.service.impl.AcompanhamentoService;
+import com.system.angels.service.impl.GestanteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,8 @@ import java.util.List;
 public class AcompanhamentoController {
 
     private final AcompanhamentoService service;
+
+    private final GestanteService gestanteService;
 
     @GetMapping
     public ResponseEntity<List<Acompanhamento>> listarAcompanhamentos() {
@@ -31,11 +35,26 @@ public class AcompanhamentoController {
         return ResponseEntity.ok(acompanhamentoDTO);
     }
 
-    @PostMapping
-    public ResponseEntity<CadastroAcompanhamentoDTO> cadastrarAcompanhamento(@RequestBody Acompanhamento acompanhamento) {
-        CadastroAcompanhamentoDTO cadastroAcompanhamentoDTO = new CadastroAcompanhamentoDTO(acompanhamento);
-        service.registrarAcompanhamento(acompanhamento);
-        return ResponseEntity.ok(cadastroAcompanhamentoDTO);
+    @PostMapping("/{gestanteId}")
+    public ResponseEntity<CadastroAcompanhamentoDTO> cadastrarAcompanhamento(@PathVariable Long gestanteId, @RequestBody CadastroAcompanhamentoDTO cadastroAcompanhamentoDTO) {
+        Acompanhamento acompanhamento = new Acompanhamento();
+        Gestante gestante = gestanteService.buscarGestantePorId(gestanteId);
+
+        acompanhamento.setGestante(gestante);
+        acompanhamento.setDataAcompanhamento(cadastroAcompanhamentoDTO.getDataAcompanhamento());
+        acompanhamento.setRealizadoPor(cadastroAcompanhamentoDTO.getRealizadoPor());
+        acompanhamento.setPesoAtual(cadastroAcompanhamentoDTO.getPesoAtual());
+        acompanhamento.setIdadeGestacional(cadastroAcompanhamentoDTO.getIdadeGestacional());
+        acompanhamento.setPressaoArterial(cadastroAcompanhamentoDTO.getPressaoArterial());
+        acompanhamento.setBatimentosCardiacosFeto(cadastroAcompanhamentoDTO.getBatimentosCardiacosFeto());
+        acompanhamento.setAlturaUterina(cadastroAcompanhamentoDTO.getAlturaUterina());
+        acompanhamento.setTipo(cadastroAcompanhamentoDTO.getTipo());
+
+        Acompanhamento adicionadoAcompanhamento = service.registrarAcompanhamento(acompanhamento);
+
+        CadastroAcompanhamentoDTO adicionadoAcompnhamentoDTO = new CadastroAcompanhamentoDTO(adicionadoAcompanhamento);
+
+        return ResponseEntity.ok(adicionadoAcompnhamentoDTO);
     }
 
     @PutMapping("{id}")

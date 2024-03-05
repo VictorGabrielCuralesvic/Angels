@@ -1,6 +1,6 @@
-CREATE TABLE dadosativos (
+CREATE TABLE dados_evolutivos (
   id BIGINT AUTO_INCREMENT NOT NULL,
-   gestante_id BIGINT NULL,
+   gestante_id BIGINT NOT NULL,
    municipio VARCHAR(255) NOT NULL,
    diagnostico_desnutricao INT NOT NULL,
    energia_eletrica_domicilio BIT NOT NULL,
@@ -16,6 +16,7 @@ CREATE TABLE dadosativos (
    estado_civil INT NOT NULL,
    quantidade_abortos INT NOT NULL,
    quantidade_filhos_vivos INT NOT NULL,
+   quantidade_gemelares INT NOT NULL,
    quantidade_gestacao INT NOT NULL,
    quantidade_nascidos_mortos INT NOT NULL,
    quantidade_nascidos_vivos INT NOT NULL,
@@ -35,7 +36,7 @@ CREATE TABLE dadosativos (
    familiar_gemeos BIT NOT NULL,
    contato VARCHAR(255) NOT NULL,
    contato_emergencia VARCHAR(255) NOT NULL,
-   CONSTRAINT `pk_dados-ativos` PRIMARY KEY (id)
+   CONSTRAINT pk_dadosevolutivos PRIMARY KEY (id)
 );
 
-ALTER TABLE `dadosativos` ADD CONSTRAINT `FK_DADOS-ATIVOS_ON_GESTANTE` FOREIGN KEY (gestante_id) REFERENCES gestante (id);
+ALTER TABLE dados_evolutivos ADD CONSTRAINT FK_DADOSEVOLUTIVOS_ON_GESTANTE FOREIGN KEY (gestante_id) REFERENCES gestante (id);

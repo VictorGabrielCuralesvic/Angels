@@ -18,7 +18,7 @@ import lombok.Setter;
 
 public class GestacaoCadastroDTO {
 
-    private Gestante gestante_id;
+    private Long gestante_id;
     private boolean consumoAlcool;
     private int frequenciaUsoAlcool;
     private Date dataUltimaMenstruacao;
@@ -35,7 +35,7 @@ public class GestacaoCadastroDTO {
     private int situacaoGestacional;
 
     public GestacaoCadastroDTO(Gestacao gestacao) {
-        this.gestante_id = gestacao.getGestante_id();
+        this.gestante_id = gestacao.getGestante().getId();
         this.consumoAlcool = gestacao.isConsumoAlcool();
         this.frequenciaUsoAlcool = gestacao.getFrequenciaUsoAlcool();
         this.dataUltimaMenstruacao = gestacao.getDataUltimaMenstruacao();

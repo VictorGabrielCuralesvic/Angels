@@ -3,6 +3,7 @@ package com.system.angels.dto;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.system.angels.domain.Gestacao;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,5 +30,24 @@ public class AtualizarGestacaoDTO {
     private int riscoGestacional;
     private boolean vacinaHepatiteB;
     private int situacaoGestacional;
+
+    public AtualizarGestacaoDTO(Gestacao gestacao) {
+        this.id = gestacao.getId();
+        this.gestante_id = gestacao.getGestante().getId();
+        this.consumoAlcool = gestacao.isConsumoAlcool();
+        this.frequenciaUsoAlcool = gestacao.getFrequenciaUsoAlcool();
+        this.dataUltimaMenstruacao = gestacao.getDataUltimaMenstruacao();
+        this.dataInicioGestacao = gestacao.getDataInicioGestacao();
+        this.fatorRh = gestacao.getFatorRh();
+        this.fuma = gestacao.isFuma();
+        this.quantidadeCigarrosDia = gestacao.getQuantidadeCigarrosDia();
+        this.usoDrogas = gestacao.getUsoDrogas();
+        this.gravidezPlanejada = gestacao.isGravidezPlanejada();
+        this.grupoSanguineo = gestacao.getGrupoSanguineo();
+        this.pesoAntesGestacao = gestacao.getPesoAntesGestacao();
+        this.riscoGestacional = gestacao.getRiscoGestacional();
+        this.vacinaHepatiteB = gestacao.isVacinaHepatiteB();
+        this.situacaoGestacional = gestacao.getSituacaoGestacional();
+    }
     
 }

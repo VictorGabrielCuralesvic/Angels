@@ -16,7 +16,7 @@ import java.util.Date;
 @Setter
 public class CadastroAcompanhamentoDTO {
 
-    private Gestante gestanteId;
+    private Long gestante_id;
     private Date dataAcompanhamento;
     private String realizadoPor;  // Pode ser "médico" ou "enfermeiro"
     private BigDecimal pesoAtual;
@@ -27,7 +27,7 @@ public class CadastroAcompanhamentoDTO {
     private String tipo;  // Pode ser "pré-natal de rotina", "ocorrência" ou "volta"
 
     public CadastroAcompanhamentoDTO(Acompanhamento acompanhamento) {
-        this.gestanteId = acompanhamento.getGestante();
+        this.gestante_id = acompanhamento.getGestante().getId();
         this.dataAcompanhamento = acompanhamento.getDataAcompanhamento();
         this.realizadoPor = acompanhamento.getRealizadoPor();
         this.pesoAtual = acompanhamento.getPesoAtual();
