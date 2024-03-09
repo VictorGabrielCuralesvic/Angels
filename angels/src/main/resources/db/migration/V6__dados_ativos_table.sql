@@ -10,7 +10,7 @@ CREATE TABLE dados_evolutivos (
    renda_familiar DECIMAL NOT NULL,
    tratamento_agua BIT NOT NULL,
    amamentacao BIT NOT NULL,
-   chefe_familia VARCHAR(255) NOT NULL,
+   chefe_familia BOOLEAN NOT NULL,
    data_ultima_gestacao datetime NULL,
    em_risco BIT NOT NULL,
    estado_civil INT NOT NULL,
