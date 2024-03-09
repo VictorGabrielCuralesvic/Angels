@@ -1,20 +1,30 @@
 spring:
+  mvc:
+    path match:
+      matching-strategy: ant-path-matcher
   datasource:
-    url: jdbc:h2:mem:angels_system_db
-    password:
-    username: vg
+    url: jdbc:mysql://localhost:3306/angels
+    password: VgVFT2@2@$CCP1910
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    hikari:
+      connection-timeout: 60000
+      maximum-pool-size: 5
   jpa:
     show-sql: true
     hibernate:
+      ddl-auto: update
       properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQL8Dialect
         hibernate.format_sql: true
   h2:
     console:
-      enabled: true
+      enabled: false
       path: /h2-console
       settings:
         trace: false
         web-allow-others: false
-springdoc:
+spring doc:
   swagger-ui:
     path: /swagger-ui.html
