@@ -26,7 +26,7 @@ public class CadastrarDadosEvolutivosDTO {
     private BigDecimal rendaFamiliar;
     private boolean tratamentoAgua;
     private boolean amamentacao;
-    private String chefeFamilia;
+    private boolean chefeFamilia;
     private Date dataUltimaGestacao;
     private boolean emRisco;
     private int estadoCivil;
@@ -63,7 +63,7 @@ public class CadastrarDadosEvolutivosDTO {
         this.rendaFamiliar = dadosEvolutivos.getRendaFamiliar();
         this.tratamentoAgua = dadosEvolutivos.isTratamentoAgua();
         this.amamentacao = dadosEvolutivos.isAmamentacao();
-        this.chefeFamilia = dadosEvolutivos.getChefeFamilia();
+        this.chefeFamilia = dadosEvolutivos.isChefeFamilia();
         this.dataUltimaGestacao = dadosEvolutivos.getDataUltimaGestacao();
         this.emRisco = dadosEvolutivos.isEmRisco();
         this.estadoCivil = dadosEvolutivos.getEstadoCivil();
