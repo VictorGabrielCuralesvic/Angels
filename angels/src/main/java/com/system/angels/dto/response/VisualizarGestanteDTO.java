@@ -1,5 +1,6 @@
-package com.system.angels.dto;
+package com.system.angels.dto.response;
 
+import com.system.angels.domain.DadosEvolutivos;
 import com.system.angels.domain.Gestante;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -30,22 +31,22 @@ public class VisualizarGestanteDTO {
     private boolean diabetes;
     private boolean maFormacaoCongenita;
 
-    public VisualizarGestanteDTO(Gestante gestante) {
+    public VisualizarGestanteDTO(Gestante gestante, DadosEvolutivos dadosEvolutivos) {
         this.id = gestante.getId();
         this.nome = gestante.getNome();
         this.dataNascimento = gestante.getDataNascimento();
         this.cpf = gestante.getCpf();
         this.sexo = gestante.getSexo();
-        this.municipio = gestante.getMunicipio();
-        this.emRisco = gestante.isEmRisco();
-        this.quantidadeAbortos = gestante.getQuantidadeAbortos();
-        this.quantidadeFilhosVivos = gestante.getQuantidadeFilhosVivos();
-        this.quantidadeGemelares = gestante.getQuantidadeGemelares();
-        this.quantidadeGestacao = gestante.getQuantidadeGestacao();
-        this.quantidadeNascidosMortos = gestante.getQuantidadeNascidosMortos();
-        this.quantidadeNascidosVivos = gestante.getQuantidadeNascidosVivos();
-        this.hipertensao = gestante.isHipertensao();
-        this.diabetes = gestante.isDiabetes();
-        this.maFormacaoCongenita = gestante.isMaFormacaoCongenita();
+        this.municipio = dadosEvolutivos.getMunicipio();
+        this.emRisco = dadosEvolutivos.isEmRisco();
+        this.quantidadeAbortos = dadosEvolutivos.getQuantidadeAbortos();
+        this.quantidadeFilhosVivos = dadosEvolutivos.getQuantidadeFilhosVivos();
+        this.quantidadeGemelares = dadosEvolutivos.getQuantidadeGemelares();
+        this.quantidadeGestacao = dadosEvolutivos.getQuantidadeGestacao();
+        this.quantidadeNascidosMortos = dadosEvolutivos.getQuantidadeNascidosMortos();
+        this.quantidadeNascidosVivos = dadosEvolutivos.getQuantidadeNascidosVivos();
+        this.hipertensao = dadosEvolutivos.isHipertensao();
+        this.diabetes = dadosEvolutivos.isDiabetes();
+        this.maFormacaoCongenita = dadosEvolutivos.isMaFormacaoCongenita();
     }
 }

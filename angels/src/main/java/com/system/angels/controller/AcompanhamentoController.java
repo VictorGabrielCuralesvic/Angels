@@ -2,9 +2,13 @@ package com.system.angels.controller;
 
 
 import com.system.angels.domain.Acompanhamento;
-import com.system.angels.dto.CadastroAcompanhamentoDTO;
-import com.system.angels.dto.VisualizarAcompanhamentoDTO;
+import com.system.angels.domain.Gestacao;
+import com.system.angels.domain.Gestante;
+import com.system.angels.dto.create.CadastrarAcompanhamentoDTO;
+import com.system.angels.dto.response.VisualizarAcompanhamentoDTO;
 import com.system.angels.service.impl.AcompanhamentoService;
+import com.system.angels.service.impl.GestacaoService;
+import com.system.angels.service.impl.GestanteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +21,8 @@ import java.util.List;
 public class AcompanhamentoController {
 
     private final AcompanhamentoService service;
+
+    private final GestacaoService gestacaoService;
 
     @GetMapping
     public ResponseEntity<List<Acompanhamento>> listarAcompanhamentos() {
@@ -31,14 +37,29 @@ public class AcompanhamentoController {
         return ResponseEntity.ok(acompanhamentoDTO);
     }
 
-    @PostMapping
-    public ResponseEntity<CadastroAcompanhamentoDTO> cadastrarAcompanhamento(@RequestBody Acompanhamento acompanhamento) {
-        CadastroAcompanhamentoDTO cadastroAcompanhamentoDTO = new CadastroAcompanhamentoDTO(acompanhamento);
-        service.registrarAcompanhamento(acompanhamento);
-        return ResponseEntity.ok(cadastroAcompanhamentoDTO);
+    @PostMapping("/{gestacaoId}")
+    public ResponseEntity<CadastrarAcompanhamentoDTO> cadastrarAcompanhamento(@PathVariable Long gestacaoId, @RequestBody CadastrarAcompanhamentoDTO cadastroAcompanhamentoDTO) {
+        Acompanhamento acompanhamento = new Acompanhamento();
+        Gestacao gestacao = gestacaoService.obterGestacaoPorId(gestacaoId);
+
+        acompanhamento.setGestacao(gestacao);
+        acompanhamento.setDataAcompanhamento(cadastroAcompanhamentoDTO.getDataAcompanhamento());
+        acompanhamento.setRealizadoPor(cadastroAcompanhamentoDTO.getRealizadoPor());
+        acompanhamento.setPesoAtual(cadastroAcompanhamentoDTO.getPesoAtual());
+        acompanhamento.setIdadeGestacional(cadastroAcompanhamentoDTO.getIdadeGestacional());
+        acompanhamento.setPressaoArterial(cadastroAcompanhamentoDTO.getPressaoArterial());
+        acompanhamento.setBatimentosCardiacosFeto(cadastroAcompanhamentoDTO.getBatimentosCardiacosFeto());
+        acompanhamento.setAlturaUterina(cadastroAcompanhamentoDTO.getAlturaUterina());
+        acompanhamento.setTipo(cadastroAcompanhamentoDTO.getTipo());
+
+        Acompanhamento adicionadoAcompanhamento = service.registrarAcompanhamento(acompanhamento);
+
+        CadastrarAcompanhamentoDTO adicionadoAcompnhamentoDTO = new CadastrarAcompanhamentoDTO(adicionadoAcompanhamento);
+
+        return ResponseEntity.ok(adicionadoAcompnhamentoDTO);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<VisualizarAcompanhamentoDTO> atualizarAcompanhamento(@PathVariable Long id, @RequestBody Acompanhamento acompanhamentoAtualziado) {
         Acompanhamento acompanhamento = service.atualizarAcompanhamento(id, acompanhamentoAtualziado);
         VisualizarAcompanhamentoDTO acompanhamentoDTO = new VisualizarAcompanhamentoDTO(acompanhamento);
@@ -51,4 +72,9 @@ public class AcompanhamentoController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/listar-acompanhamento-por-gestao/{gestacaoId}")
+    public ResponseEntity<List<Acompanhamento>> listarAcompanhamentoPorGestacaoId(@PathVariable Long gestacaoId) {
+        List<Acompanhamento> acompanhamentos = service.listarAcompanhamentoPorGestacaoId(gestacaoId);
+        return ResponseEntity.ok(acompanhamentos);
+    }
 }

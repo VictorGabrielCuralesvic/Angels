@@ -1,4 +1,4 @@
-package com.system.angels.dto;
+package com.system.angels.dto.response;
 
 import com.system.angels.domain.Acompanhamento;
 import com.system.angels.domain.Gestante;
@@ -10,13 +10,15 @@ import lombok.Setter;
 import java.math.BigDecimal;
 import java.util.Date;
 
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class CadastroAcompanhamentoDTO {
+public class VisualizarAcompanhamentoDTO {
 
-    private Gestante gestanteId;
+    private Long id;
+    private Long gestacaoId;
     private Date dataAcompanhamento;
     private String realizadoPor;  // Pode ser "médico" ou "enfermeiro"
     private BigDecimal pesoAtual;
@@ -26,9 +28,10 @@ public class CadastroAcompanhamentoDTO {
     private Integer alturaUterina;  // Pode ser vazio
     private String tipo;  // Pode ser "pré-natal de rotina", "ocorrência" ou "volta"
 
-    public CadastroAcompanhamentoDTO(Acompanhamento acompanhamento) {
-        this.gestanteId = acompanhamento.getGestante();
-        this.dataAcompanhamento = acompanhamento.getDataAcompanhamento();
+    public VisualizarAcompanhamentoDTO(Acompanhamento acompanhamento) {
+        this.id = acompanhamento.getId();
+        this.gestacaoId = acompanhamento.getGestacao().getId();
+        this. dataAcompanhamento = acompanhamento.getDataAcompanhamento();
         this.realizadoPor = acompanhamento.getRealizadoPor();
         this.pesoAtual = acompanhamento.getPesoAtual();
         this.idadeGestacional = acompanhamento.getIdadeGestacional();

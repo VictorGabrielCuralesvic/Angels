@@ -8,16 +8,16 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "DadosAtivos")
-public class DadosAtivos {
+@Table(name = "DadosEvolutivos")
+public class DadosEvolutivos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "gestante_id")
-    private Gestante gestante_id;
+    @JoinColumn(name = "gestante_id", nullable = false)
+    private Gestante gestante;
 
     @Column(nullable = false)
     private String municipio;
@@ -47,7 +47,7 @@ public class DadosAtivos {
     private boolean amamentacao;
 
     @Column(nullable = false)
-    private String chefeFamilia;
+    private boolean chefeFamilia;
 
     @Column
     private Date dataUltimaGestacao;
@@ -63,6 +63,9 @@ public class DadosAtivos {
 
     @Column(nullable = false)
     private int quantidadeFilhosVivos;
+
+    @Column(nullable = false)
+    private int quantidadeGemelares;
 
     @Column(nullable = false)
     private int quantidadeGestacao;

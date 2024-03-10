@@ -2,31 +2,27 @@ package com.system.angels.controller;
 
 import java.util.List;
 
+import com.system.angels.domain.Gestante;
+import com.system.angels.dto.create.CadastrarGestacaoDTO;
+import com.system.angels.service.impl.GestacaoService;
+import com.system.angels.service.impl.GestanteService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.system.angels.domain.Gestacao;
-import com.system.angels.dto.AtualizarGestacaoDTO;
-import com.system.angels.dto.GestacaoCadastroDTO;
-import com.system.angels.dto.VisualizarGestacaoDTO;
-import com.system.angels.service.iGestacaoService;
+import com.system.angels.dto.update.AtualizarGestacaoDTO;
+import com.system.angels.dto.response.VisualizarGestacaoDTO;
 
 @RestController
 @RequestMapping("/gestacoes")
+@RequiredArgsConstructor
 public class GestacaoController {
 
-    private final iGestacaoService service;
+    private final GestacaoService service;
 
-    public GestacaoController(iGestacaoService service) {
-        this.service = service;
-    }
+    private final GestanteService gestanteService;
 
     @GetMapping
     public ResponseEntity<List<Gestacao>> obterTodasGestacoes() {
@@ -36,19 +32,43 @@ public class GestacaoController {
 
     @GetMapping("/{id}")
     public ResponseEntity<VisualizarGestacaoDTO> obterGestacaoPorId(@PathVariable Long id) {
-        VisualizarGestacaoDTO gestacaoDTO = service.obterGestacaoPorId(id);
-        return ResponseEntity.ok(gestacaoDTO);
+        Gestacao gestacaoDTO = service.obterGestacaoPorId(id);
+        VisualizarGestacaoDTO visualizarGestacaoDTO = new VisualizarGestacaoDTO(gestacaoDTO);
+        return ResponseEntity.ok(visualizarGestacaoDTO);
     }
 
-    @PostMapping
-    public ResponseEntity<GestacaoCadastroDTO> adicionarGestacao(@RequestBody GestacaoCadastroDTO gestacaoDTO) {
-        GestacaoCadastroDTO gestacao = service.adicionarGestacao(gestacaoDTO);
-        return ResponseEntity.ok(gestacao);
+    @PostMapping("/{gestanteId}")
+    public ResponseEntity<CadastrarGestacaoDTO> adicionarGestacao(@PathVariable Long gestanteId, @RequestBody CadastrarGestacaoDTO gestacaoDTO) {
+        Gestacao gestacao = new Gestacao();
+        Gestante gestante = gestanteService.buscarGestantePorId(gestanteId);
+
+        gestacao.setGestante(gestante);
+        gestacao.setConsumoAlcool(gestacaoDTO.isConsumoAlcool());
+        gestacao.setFrequenciaUsoAlcool(gestacaoDTO.getFrequenciaUsoAlcool());
+        gestacao.setDataUltimaMenstruacao(gestacaoDTO.getDataUltimaMenstruacao());
+        gestacao.setDataInicioGestacao(gestacaoDTO.getDataInicioGestacao());
+        gestacao.setFatorRh(gestacaoDTO.getFatorRh());
+        gestacao.setFuma(gestacaoDTO.isFuma());
+        gestacao.setQuantidadeCigarrosDia(gestacaoDTO.getQuantidadeCigarrosDia());
+        gestacao.setUsoDrogas(gestacaoDTO.getUsoDrogas());
+        gestacao.setGravidezPlanejada(gestacaoDTO.isGravidezPlanejada());
+        gestacao.setGrupoSanguineo(gestacaoDTO.getGrupoSanguineo());
+        gestacao.setPesoAntesGestacao(gestacaoDTO.getPesoAntesGestacao());
+        gestacao.setRiscoGestacional(gestacaoDTO.getRiscoGestacional());
+        gestacao.setVacinaHepatiteB(gestacaoDTO.isVacinaHepatiteB());
+        gestacao.setSituacaoGestacional(gestacaoDTO.getSituacaoGestacional());
+
+        Gestacao gestacaoAdicionada = service.adicionarGestacao(gestacao);
+
+        CadastrarGestacaoDTO gestacaoAdicionadaDTO = new CadastrarGestacaoDTO(gestacaoAdicionada);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(gestacaoAdicionadaDTO);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<AtualizarGestacaoDTO> atualizarGestacao(@PathVariable Long id, @RequestBody AtualizarGestacaoDTO atualizarGestacaoDTO) {
-        AtualizarGestacaoDTO gestacaoDTO = service.atualizarGestacao(id, atualizarGestacaoDTO);
+    public ResponseEntity<AtualizarGestacaoDTO> atualizarGestacao(@PathVariable Long id, @RequestBody Gestacao atualizarGestacaoDTO) {
+        Gestacao gestacao = service.atualizarGestacao(id, atualizarGestacaoDTO);
+        AtualizarGestacaoDTO gestacaoDTO = new AtualizarGestacaoDTO(gestacao);
         return ResponseEntity.ok(gestacaoDTO);
     }
 

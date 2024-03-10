@@ -13,7 +13,7 @@ public class Exame {
 
     @ManyToOne
     @JoinColumn(name = "acompanhamento_id", nullable = false)
-    private Acompanhamento acompanhamentoId;
+    private Acompanhamento acompanhamento;
 
     @Column(nullable = false)
     private String tipo;

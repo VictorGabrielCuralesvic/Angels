@@ -1,6 +1,5 @@
-package com.system.angels.dto;
+package com.system.angels.dto.update;
 
-import com.system.angels.domain.Acompanhamento;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 public class AtualizarExameDTO {
     private Long id;
-    private Acompanhamento acompanhamentoId;
+    private Long acompanhamentoId;
     private String tipo;
     private String resultado;
     private String observacao;

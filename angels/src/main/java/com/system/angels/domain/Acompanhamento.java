@@ -15,8 +15,8 @@ public class Acompanhamento {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "gestante_id", nullable = false)
-    private Gestante gestante;
+    @JoinColumn(name = "gestacao_id", nullable = false)
+    private Gestacao gestacao;
 
     @Column(nullable = false)
     private Date dataAcompanhamento;
@@ -41,4 +41,5 @@ public class Acompanhamento {
 
     @Column(nullable = false)
     private String tipo;
+
 }

@@ -1,4 +1,4 @@
-package com.system.angels.dto;
+package com.system.angels.dto.response;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -17,7 +17,7 @@ import lombok.Setter;
 @Setter
 public class VisualizarGestacaoDTO {
     private Long id;
-    private Gestante gestante_id;
+    private Long gestante_id;
     private boolean consumoAlcool;
     private int frequenciaUsoAlcool;
     private Date dataUltimaMenstruacao;
@@ -35,7 +35,7 @@ public class VisualizarGestacaoDTO {
 
     public VisualizarGestacaoDTO(Gestacao gestacao) {
         this.id = gestacao.getId();
-        this.gestante_id = gestacao.getGestante_id();
+        this.gestante_id = gestacao.getGestante().getId();
         this.consumoAlcool = gestacao.isConsumoAlcool();
         this.frequenciaUsoAlcool = gestacao.getFrequenciaUsoAlcool();
     }
