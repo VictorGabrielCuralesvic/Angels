@@ -1,12 +1,7 @@
 package com.system.angels.service.impl;
 
 import com.system.angels.domain.Exame;
-import com.system.angels.dto.AtualizarExameDTO;
-import com.system.angels.dto.ExameDTO;
-import com.system.angels.dto.RemoverExameDTO;
-import com.system.angels.dto.VisualizarExameDTO;
 import com.system.angels.repository.ExameRepository;
-import com.system.angels.repository.GestacaoRepository;
 import com.system.angels.service.iExameService;
 import org.springframework.stereotype.Service;
 

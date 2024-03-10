@@ -1,21 +1,13 @@
-package com.system.angels.dto;
+package com.system.angels.dto.response;
 
 import com.system.angels.domain.DadosEvolutivos;
 import com.system.angels.domain.Gestante;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
-@NoArgsConstructor
-@AllArgsConstructor
-@Getter
-@Setter
-public class CadastrarDadosEvolutivosDTO {
-
+public class VisualizarDadosEvolutivosDTO {
+    private Long id;
     private Gestante gestante;
     private String municipio;
     private int diagnosticoDesnutricao;
@@ -32,6 +24,7 @@ public class CadastrarDadosEvolutivosDTO {
     private int estadoCivil;
     private int quantidadeAbortos;
     private int quantidadeFilhosVivos;
+    private int quantidadeGemelares;
     private int quantidadeGestacao;
     private int quantidadeNascidosMortos;
     private int quantidadeNascidosVivos;
@@ -52,7 +45,8 @@ public class CadastrarDadosEvolutivosDTO {
     private String contato;
     private String contatoEmergencia;
 
-    public CadastrarDadosEvolutivosDTO(DadosEvolutivos dadosEvolutivos) {
+    public VisualizarDadosEvolutivosDTO(DadosEvolutivos dadosEvolutivos) {
+        this.id = dadosEvolutivos.getId();
         this.gestante = dadosEvolutivos.getGestante();
         this.municipio = dadosEvolutivos.getMunicipio();
         this.diagnosticoDesnutricao = dadosEvolutivos.getDiagnosticoDesnutricao();
@@ -69,6 +63,7 @@ public class CadastrarDadosEvolutivosDTO {
         this.estadoCivil = dadosEvolutivos.getEstadoCivil();
         this.quantidadeAbortos = dadosEvolutivos.getQuantidadeAbortos();
         this.quantidadeFilhosVivos = dadosEvolutivos.getQuantidadeFilhosVivos();
+        this.quantidadeGemelares = dadosEvolutivos.getQuantidadeGemelares();
         this.quantidadeGestacao = dadosEvolutivos.getQuantidadeGestacao();
         this.quantidadeNascidosMortos = dadosEvolutivos.getQuantidadeNascidosMortos();
         this.quantidadeNascidosVivos = dadosEvolutivos.getQuantidadeNascidosVivos();
@@ -89,5 +84,4 @@ public class CadastrarDadosEvolutivosDTO {
         this.contato = dadosEvolutivos.getContato();
         this.contatoEmergencia = dadosEvolutivos.getContatoEmergencia();
     }
-
 }

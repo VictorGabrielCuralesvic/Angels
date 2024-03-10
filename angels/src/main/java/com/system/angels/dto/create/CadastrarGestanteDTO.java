@@ -1,4 +1,4 @@
-package com.system.angels.dto;
+package com.system.angels.dto.create;
 
 import com.system.angels.domain.Gestante;
 import lombok.AllArgsConstructor;
@@ -12,14 +12,14 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
-public class GestanteCadastroDTO {
+public class CadastrarGestanteDTO {
     private String nome;
     private Date dataNascimento;
     private String cpf;
     private int raca;
     private String sexo;
 
-    public GestanteCadastroDTO(Gestante gestante) {
+    public CadastrarGestanteDTO(Gestante gestante) {
         this.nome = gestante.getNome();
         this.dataNascimento = gestante.getDataNascimento();
         this.cpf = gestante.getCpf();

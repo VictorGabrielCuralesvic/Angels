@@ -38,5 +38,3 @@ CREATE TABLE dados_evolutivos (
    contato_emergencia VARCHAR(255) NOT NULL,
    CONSTRAINT pk_dadosevolutivos PRIMARY KEY (id)
 );
-
-ALTER TABLE dados_evolutivos ADD CONSTRAINT FK_DADOSEVOLUTIVOS_ON_GESTANTE FOREIGN KEY (gestante_id) REFERENCES gestante (id);

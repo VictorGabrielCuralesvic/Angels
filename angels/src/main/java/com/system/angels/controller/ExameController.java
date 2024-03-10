@@ -2,14 +2,11 @@ package com.system.angels.controller;
 
 import com.system.angels.domain.Acompanhamento;
 import com.system.angels.domain.Exame;
-import com.system.angels.domain.Gestacao;
-import com.system.angels.dto.AtualizarExameDTO;
-import com.system.angels.dto.ExameDTO;
-import com.system.angels.dto.RemoverExameDTO;
-import com.system.angels.dto.VisualizarExameDTO;
-import com.system.angels.service.iExameService;
+import com.system.angels.dto.create.CadastrarExameDTO;
+import com.system.angels.dto.response.VisualizarExameDTO;
 import com.system.angels.service.impl.AcompanhamentoService;
 import com.system.angels.service.impl.ExameService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,20 +16,15 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/exames")
+@RequiredArgsConstructor
 public class ExameController {
 
     private final ExameService exameService;
 
     private final AcompanhamentoService acompanhamentoService;
 
-    @Autowired
-    public ExameController(ExameService exameService, AcompanhamentoService acompanhamentoService) {
-        this.exameService = exameService;
-        this.acompanhamentoService = acompanhamentoService;
-    }
-
     @PostMapping("/{acompanhamentoId}")
-    public ResponseEntity<ExameDTO> criarExame(@PathVariable Long acompanhamentoId, @RequestBody ExameDTO exameDTO) {
+    public ResponseEntity<CadastrarExameDTO> criarExame(@PathVariable Long acompanhamentoId, @RequestBody CadastrarExameDTO exameDTO) {
         Exame exame = new Exame();
         Acompanhamento acompanhamento = acompanhamentoService.buscarAcompanhamentoPorId(acompanhamentoId);
 
@@ -43,7 +35,7 @@ public class ExameController {
 
         Exame adicionaExame = exameService.criarExame(exame);
 
-        ExameDTO adicionaExameDTO = new ExameDTO(adicionaExame);
+        CadastrarExameDTO adicionaExameDTO = new CadastrarExameDTO(adicionaExame);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(adicionaExameDTO);
     }
