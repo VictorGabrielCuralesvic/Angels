@@ -5,6 +5,7 @@ import java.util.List;
 import com.system.angels.domain.Gestante;
 import com.system.angels.service.impl.GestacaoService;
 import com.system.angels.service.impl.GestanteService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,16 +25,12 @@ import com.system.angels.service.iGestacaoService;
 
 @RestController
 @RequestMapping("/gestacoes")
+@RequiredArgsConstructor
 public class GestacaoController {
 
     private final GestacaoService service;
 
     private final GestanteService gestanteService;
-
-    public GestacaoController(GestacaoService service, GestanteService gestanteService) {
-        this.service = service;
-        this.gestanteService = gestanteService;
-    }
 
     @GetMapping
     public ResponseEntity<List<Gestacao>> obterTodasGestacoes() {
@@ -76,6 +73,7 @@ public class GestacaoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(gestacaoAdicionadaDTO);
     }
 
+    @PutMapping("/{id}")
     public ResponseEntity<AtualizarGestacaoDTO> atualizarGestacao(@PathVariable Long id, @RequestBody Gestacao atualizarGestacaoDTO) {
         Gestacao gestacao = service.atualizarGestacao(id, atualizarGestacaoDTO);
         AtualizarGestacaoDTO gestacaoDTO = new AtualizarGestacaoDTO(gestacao);

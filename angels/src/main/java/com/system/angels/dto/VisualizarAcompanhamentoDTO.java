@@ -18,7 +18,7 @@ import java.util.Date;
 public class VisualizarAcompanhamentoDTO {
 
     private Long id;
-    private Long gestanteId;
+    private Long gestacaoId;
     private Date dataAcompanhamento;
     private String realizadoPor;  // Pode ser "médico" ou "enfermeiro"
     private BigDecimal pesoAtual;
@@ -30,7 +30,7 @@ public class VisualizarAcompanhamentoDTO {
 
     public VisualizarAcompanhamentoDTO(Acompanhamento acompanhamento) {
         this.id = acompanhamento.getId();
-        this.gestanteId = acompanhamento.getGestante().getId();
+        this.gestacaoId = acompanhamento.getGestacao().getId();
         this. dataAcompanhamento = acompanhamento.getDataAcompanhamento();
         this.realizadoPor = acompanhamento.getRealizadoPor();
         this.pesoAtual = acompanhamento.getPesoAtual();

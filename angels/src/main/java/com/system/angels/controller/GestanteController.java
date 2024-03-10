@@ -55,7 +55,7 @@ public class GestanteController {
         return ResponseEntity.ok(gestanteEDadosEvolutivosDTO);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<VisualizarGestanteDTO> atualizarGestante(@PathVariable Long id, @RequestBody Gestante gestanteAtualizada) {
         Gestante gestante = service.atualizarGestante(id, gestanteAtualizada);
         DadosEvolutivos dadosEvolutivos = dadosEvolutivosService.ultimosDadosEvolutivosPorGestante(gestante);

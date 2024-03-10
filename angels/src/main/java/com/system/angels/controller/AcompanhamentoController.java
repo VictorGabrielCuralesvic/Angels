@@ -2,10 +2,12 @@ package com.system.angels.controller;
 
 
 import com.system.angels.domain.Acompanhamento;
+import com.system.angels.domain.Gestacao;
 import com.system.angels.domain.Gestante;
 import com.system.angels.dto.CadastroAcompanhamentoDTO;
 import com.system.angels.dto.VisualizarAcompanhamentoDTO;
 import com.system.angels.service.impl.AcompanhamentoService;
+import com.system.angels.service.impl.GestacaoService;
 import com.system.angels.service.impl.GestanteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +22,7 @@ public class AcompanhamentoController {
 
     private final AcompanhamentoService service;
 
-    private final GestanteService gestanteService;
+    private final GestacaoService gestacaoService;
 
     @GetMapping
     public ResponseEntity<List<Acompanhamento>> listarAcompanhamentos() {
@@ -35,12 +37,12 @@ public class AcompanhamentoController {
         return ResponseEntity.ok(acompanhamentoDTO);
     }
 
-    @PostMapping("/{gestanteId}")
-    public ResponseEntity<CadastroAcompanhamentoDTO> cadastrarAcompanhamento(@PathVariable Long gestanteId, @RequestBody CadastroAcompanhamentoDTO cadastroAcompanhamentoDTO) {
+    @PostMapping("/{gestacaoId}")
+    public ResponseEntity<CadastroAcompanhamentoDTO> cadastrarAcompanhamento(@PathVariable Long gestacaoId, @RequestBody CadastroAcompanhamentoDTO cadastroAcompanhamentoDTO) {
         Acompanhamento acompanhamento = new Acompanhamento();
-        Gestante gestante = gestanteService.buscarGestantePorId(gestanteId);
+        Gestacao gestacao = gestacaoService.obterGestacaoPorId(gestacaoId);
 
-        acompanhamento.setGestante(gestante);
+        acompanhamento.setGestacao(gestacao);
         acompanhamento.setDataAcompanhamento(cadastroAcompanhamentoDTO.getDataAcompanhamento());
         acompanhamento.setRealizadoPor(cadastroAcompanhamentoDTO.getRealizadoPor());
         acompanhamento.setPesoAtual(cadastroAcompanhamentoDTO.getPesoAtual());
@@ -57,7 +59,7 @@ public class AcompanhamentoController {
         return ResponseEntity.ok(adicionadoAcompnhamentoDTO);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public ResponseEntity<VisualizarAcompanhamentoDTO> atualizarAcompanhamento(@PathVariable Long id, @RequestBody Acompanhamento acompanhamentoAtualziado) {
         Acompanhamento acompanhamento = service.atualizarAcompanhamento(id, acompanhamentoAtualziado);
         VisualizarAcompanhamentoDTO acompanhamentoDTO = new VisualizarAcompanhamentoDTO(acompanhamento);

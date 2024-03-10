@@ -10,6 +10,7 @@ import com.system.angels.dto.VisualizarExameDTO;
 import com.system.angels.service.iExameService;
 import com.system.angels.service.impl.AcompanhamentoService;
 import com.system.angels.service.impl.ExameService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,17 +20,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/exames")
+@RequiredArgsConstructor
 public class ExameController {
 
     private final ExameService exameService;
 
     private final AcompanhamentoService acompanhamentoService;
-
-    @Autowired
-    public ExameController(ExameService exameService, AcompanhamentoService acompanhamentoService) {
-        this.exameService = exameService;
-        this.acompanhamentoService = acompanhamentoService;
-    }
 
     @PostMapping("/{acompanhamentoId}")
     public ResponseEntity<ExameDTO> criarExame(@PathVariable Long acompanhamentoId, @RequestBody ExameDTO exameDTO) {

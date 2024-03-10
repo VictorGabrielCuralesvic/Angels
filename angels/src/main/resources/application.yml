@@ -3,7 +3,7 @@ spring:
     path match:
       matching-strategy: ant-path-matcher
   datasource:
-    url: jdbc:mysql://localhost:3306/angels
+    url: jdbc:mysql://localhost:3306/angels_two
     password: VgVFT2@2@$CCP1910
     username: root
     driver-class-name: com.mysql.cj.jdbc.Driver
