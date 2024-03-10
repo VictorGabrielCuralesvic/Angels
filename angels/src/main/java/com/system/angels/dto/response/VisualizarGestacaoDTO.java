@@ -1,4 +1,4 @@
-package com.system.angels.dto;
+package com.system.angels.dto.response;
 
 import java.math.BigDecimal;
 import java.util.Date;

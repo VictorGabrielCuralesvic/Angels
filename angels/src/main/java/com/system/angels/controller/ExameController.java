@@ -3,7 +3,7 @@ package com.system.angels.controller;
 import com.system.angels.domain.Acompanhamento;
 import com.system.angels.domain.Exame;
 import com.system.angels.dto.create.CadastrarExameDTO;
-import com.system.angels.dto.VisualizarExameDTO;
+import com.system.angels.dto.response.VisualizarExameDTO;
 import com.system.angels.service.impl.AcompanhamentoService;
 import com.system.angels.service.impl.ExameService;
 import org.springframework.beans.factory.annotation.Autowired;

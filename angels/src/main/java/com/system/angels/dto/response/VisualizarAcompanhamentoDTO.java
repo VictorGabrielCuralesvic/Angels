@@ -1,4 +1,4 @@
-package com.system.angels.dto;
+package com.system.angels.dto.response;
 
 import com.system.angels.domain.Acompanhamento;
 import com.system.angels.domain.Gestante;

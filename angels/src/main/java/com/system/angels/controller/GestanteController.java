@@ -3,7 +3,7 @@ package com.system.angels.controller;
 import com.system.angels.domain.DadosEvolutivos;
 import com.system.angels.domain.Gestante;
 import com.system.angels.dto.create.CadastrarGestanteEDadosEvolutivosDTO;
-import com.system.angels.dto.VisualizarGestanteDTO;
+import com.system.angels.dto.response.VisualizarGestanteDTO;
 import com.system.angels.service.impl.DadosEvolutivosService;
 import com.system.angels.service.impl.GestanteService;
 import lombok.RequiredArgsConstructor;

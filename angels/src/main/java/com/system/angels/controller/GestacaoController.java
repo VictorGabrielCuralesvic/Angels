@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.system.angels.domain.Gestacao;
 import com.system.angels.dto.update.AtualizarGestacaoDTO;
-import com.system.angels.dto.VisualizarGestacaoDTO;
+import com.system.angels.dto.response.VisualizarGestacaoDTO;
 
 @RestController
 @RequestMapping("/gestacoes")

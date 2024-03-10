@@ -4,7 +4,7 @@ package com.system.angels.controller;
 import com.system.angels.domain.Acompanhamento;
 import com.system.angels.domain.Gestante;
 import com.system.angels.dto.create.CadastrarAcompanhamentoDTO;
-import com.system.angels.dto.VisualizarAcompanhamentoDTO;
+import com.system.angels.dto.response.VisualizarAcompanhamentoDTO;
 import com.system.angels.service.impl.AcompanhamentoService;
 import com.system.angels.service.impl.GestanteService;
 import lombok.RequiredArgsConstructor;
