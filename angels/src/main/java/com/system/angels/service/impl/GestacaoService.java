@@ -3,13 +3,9 @@ package com.system.angels.service.impl;
 import java.util.List;
 import java.util.Optional;
 
-import com.system.angels.domain.Gestante;
 import org.springframework.stereotype.Service;
 import com.system.angels.repository.GestacaoRepository;
 import com.system.angels.domain.Gestacao;
-import com.system.angels.dto.AtualizarGestacaoDTO;
-import com.system.angels.dto.GestacaoCadastroDTO;
-import com.system.angels.dto.VisualizarGestacaoDTO;
 import com.system.angels.service.iGestacaoService;
 
 @Service

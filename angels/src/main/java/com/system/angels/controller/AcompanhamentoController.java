@@ -4,8 +4,8 @@ package com.system.angels.controller;
 import com.system.angels.domain.Acompanhamento;
 import com.system.angels.domain.Gestacao;
 import com.system.angels.domain.Gestante;
-import com.system.angels.dto.CadastroAcompanhamentoDTO;
-import com.system.angels.dto.VisualizarAcompanhamentoDTO;
+import com.system.angels.dto.create.CadastrarAcompanhamentoDTO;
+import com.system.angels.dto.response.VisualizarAcompanhamentoDTO;
 import com.system.angels.service.impl.AcompanhamentoService;
 import com.system.angels.service.impl.GestacaoService;
 import com.system.angels.service.impl.GestanteService;
@@ -38,7 +38,7 @@ public class AcompanhamentoController {
     }
 
     @PostMapping("/{gestacaoId}")
-    public ResponseEntity<CadastroAcompanhamentoDTO> cadastrarAcompanhamento(@PathVariable Long gestacaoId, @RequestBody CadastroAcompanhamentoDTO cadastroAcompanhamentoDTO) {
+    public ResponseEntity<CadastrarAcompanhamentoDTO> cadastrarAcompanhamento(@PathVariable Long gestacaoId, @RequestBody CadastrarAcompanhamentoDTO cadastroAcompanhamentoDTO) {
         Acompanhamento acompanhamento = new Acompanhamento();
         Gestacao gestacao = gestacaoService.obterGestacaoPorId(gestacaoId);
 
@@ -54,7 +54,7 @@ public class AcompanhamentoController {
 
         Acompanhamento adicionadoAcompanhamento = service.registrarAcompanhamento(acompanhamento);
 
-        CadastroAcompanhamentoDTO adicionadoAcompnhamentoDTO = new CadastroAcompanhamentoDTO(adicionadoAcompanhamento);
+        CadastrarAcompanhamentoDTO adicionadoAcompnhamentoDTO = new CadastrarAcompanhamentoDTO(adicionadoAcompanhamento);
 
         return ResponseEntity.ok(adicionadoAcompnhamentoDTO);
     }

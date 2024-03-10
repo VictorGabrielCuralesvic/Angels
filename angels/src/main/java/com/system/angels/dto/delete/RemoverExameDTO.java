@@ -1,4 +1,4 @@
-package com.system.angels.dto;
+package com.system.angels.dto.delete;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
