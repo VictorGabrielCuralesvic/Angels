@@ -1,7 +1,6 @@
-package com.system.angels.dto;
+package com.system.angels.dto.create;
 
 import com.system.angels.domain.Acompanhamento;
-import com.system.angels.domain.Gestante;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +13,7 @@ import java.util.Date;
 @AllArgsConstructor
 @Getter
 @Setter
-public class CadastroAcompanhamentoDTO {
+public class CadastrarAcompanhamentoDTO {
 
     private Long gestante_id;
     private Date dataAcompanhamento;
@@ -26,7 +25,7 @@ public class CadastroAcompanhamentoDTO {
     private Integer alturaUterina;  // Pode ser vazio
     private String tipo;  // Pode ser "pré-natal de rotina", "ocorrência" ou "volta"
 
-    public CadastroAcompanhamentoDTO(Acompanhamento acompanhamento) {
+    public CadastrarAcompanhamentoDTO(Acompanhamento acompanhamento) {
         this.gestante_id = acompanhamento.getGestante().getId();
         this.dataAcompanhamento = acompanhamento.getDataAcompanhamento();
         this.realizadoPor = acompanhamento.getRealizadoPor();

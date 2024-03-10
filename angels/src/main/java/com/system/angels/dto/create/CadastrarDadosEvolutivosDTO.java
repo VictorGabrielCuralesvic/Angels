@@ -1,4 +1,4 @@
-package com.system.angels.dto;
+package com.system.angels.dto.create;
 
 import com.system.angels.domain.DadosEvolutivos;
 import com.system.angels.domain.Gestante;

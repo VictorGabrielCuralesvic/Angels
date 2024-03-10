@@ -1,6 +1,5 @@
-package com.system.angels.dto;
+package com.system.angels.dto.update;
 
-import com.system.angels.domain.Acompanhamento;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

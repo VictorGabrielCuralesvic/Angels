@@ -3,6 +3,7 @@ package com.system.angels.controller;
 import java.util.List;
 
 import com.system.angels.domain.Gestante;
+import com.system.angels.dto.create.CadastrarGestacaoDTO;
 import com.system.angels.service.impl.GestacaoService;
 import com.system.angels.service.impl.GestanteService;
 import org.springframework.http.HttpStatus;
@@ -11,16 +12,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.system.angels.domain.Gestacao;
-import com.system.angels.dto.AtualizarGestacaoDTO;
-import com.system.angels.dto.GestacaoCadastroDTO;
+import com.system.angels.dto.update.AtualizarGestacaoDTO;
 import com.system.angels.dto.VisualizarGestacaoDTO;
-import com.system.angels.service.iGestacaoService;
 
 @RestController
 @RequestMapping("/gestacoes")
@@ -49,7 +47,7 @@ public class GestacaoController {
     }
 
     @PostMapping("/{gestanteId}")
-    public ResponseEntity<GestacaoCadastroDTO> adicionarGestacao(@PathVariable Long gestanteId, @RequestBody GestacaoCadastroDTO gestacaoDTO) {
+    public ResponseEntity<CadastrarGestacaoDTO> adicionarGestacao(@PathVariable Long gestanteId, @RequestBody CadastrarGestacaoDTO gestacaoDTO) {
         Gestacao gestacao = new Gestacao();
         Gestante gestante = gestanteService.buscarGestantePorId(gestanteId);
 
@@ -71,7 +69,7 @@ public class GestacaoController {
 
         Gestacao gestacaoAdicionada = service.adicionarGestacao(gestacao);
 
-        GestacaoCadastroDTO gestacaoAdicionadaDTO = new GestacaoCadastroDTO(gestacaoAdicionada);
+        CadastrarGestacaoDTO gestacaoAdicionadaDTO = new CadastrarGestacaoDTO(gestacaoAdicionada);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(gestacaoAdicionadaDTO);
     }

@@ -1,9 +1,10 @@
-package com.system.angels.dto;
+package com.system.angels.dto.create;
 
 import java.math.BigDecimal;
 import java.util.Date;
 
 import com.system.angels.domain.Gestacao;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,8 +14,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class AtualizarGestacaoDTO {
-    private Long id;
+
+public class CadastrarGestacaoDTO {
+
     private Long gestante_id;
     private boolean consumoAlcool;
     private int frequenciaUsoAlcool;
@@ -31,8 +33,7 @@ public class AtualizarGestacaoDTO {
     private boolean vacinaHepatiteB;
     private int situacaoGestacional;
 
-    public AtualizarGestacaoDTO(Gestacao gestacao) {
-        this.id = gestacao.getId();
+    public CadastrarGestacaoDTO(Gestacao gestacao) {
         this.gestante_id = gestacao.getGestante().getId();
         this.consumoAlcool = gestacao.isConsumoAlcool();
         this.frequenciaUsoAlcool = gestacao.getFrequenciaUsoAlcool();

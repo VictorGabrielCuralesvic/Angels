@@ -1,4 +1,4 @@
-package com.system.angels.dto;
+package com.system.angels.dto.update;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

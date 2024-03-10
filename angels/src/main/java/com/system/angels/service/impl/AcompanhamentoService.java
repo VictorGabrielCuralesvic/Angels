@@ -1,7 +1,6 @@
 package com.system.angels.service.impl;
 
 import com.system.angels.domain.Acompanhamento;
-import com.system.angels.dto.CadastroAcompanhamentoDTO;
 import com.system.angels.repository.AcompanhamentoRepository;
 import com.system.angels.service.iAcompanhamentoService;
 import lombok.RequiredArgsConstructor;

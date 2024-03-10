@@ -3,7 +3,7 @@ package com.system.angels.controller;
 
 import com.system.angels.domain.Acompanhamento;
 import com.system.angels.domain.Gestante;
-import com.system.angels.dto.CadastroAcompanhamentoDTO;
+import com.system.angels.dto.create.CadastrarAcompanhamentoDTO;
 import com.system.angels.dto.VisualizarAcompanhamentoDTO;
 import com.system.angels.service.impl.AcompanhamentoService;
 import com.system.angels.service.impl.GestanteService;
@@ -36,7 +36,7 @@ public class AcompanhamentoController {
     }
 
     @PostMapping("/{gestanteId}")
-    public ResponseEntity<CadastroAcompanhamentoDTO> cadastrarAcompanhamento(@PathVariable Long gestanteId, @RequestBody CadastroAcompanhamentoDTO cadastroAcompanhamentoDTO) {
+    public ResponseEntity<CadastrarAcompanhamentoDTO> cadastrarAcompanhamento(@PathVariable Long gestanteId, @RequestBody CadastrarAcompanhamentoDTO cadastroAcompanhamentoDTO) {
         Acompanhamento acompanhamento = new Acompanhamento();
         Gestante gestante = gestanteService.buscarGestantePorId(gestanteId);
 
@@ -52,7 +52,7 @@ public class AcompanhamentoController {
 
         Acompanhamento adicionadoAcompanhamento = service.registrarAcompanhamento(acompanhamento);
 
-        CadastroAcompanhamentoDTO adicionadoAcompnhamentoDTO = new CadastroAcompanhamentoDTO(adicionadoAcompanhamento);
+        CadastrarAcompanhamentoDTO adicionadoAcompnhamentoDTO = new CadastrarAcompanhamentoDTO(adicionadoAcompanhamento);
 
         return ResponseEntity.ok(adicionadoAcompnhamentoDTO);
     }
