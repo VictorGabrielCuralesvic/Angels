@@ -47,7 +47,7 @@ public class DadosEvolutivos {
     private boolean amamentacao;
 
     @Column(nullable = false)
-    private String chefeFamilia;
+    private boolean chefeFamilia;
 
     @Column
     private Date dataUltimaGestacao;

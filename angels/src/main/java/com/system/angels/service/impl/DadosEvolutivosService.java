@@ -59,7 +59,7 @@ public class DadosEvolutivosService implements iDadosEvolutivosService {
         dadosEvolutivos.setRendaFamiliar(dadosEvolutivosAtualizados.getRendaFamiliar());
         dadosEvolutivos.setTratamentoAgua(dadosEvolutivosAtualizados.isTratamentoAgua());
         dadosEvolutivos.setAmamentacao(dadosEvolutivosAtualizados.isAmamentacao());
-        dadosEvolutivos.setChefeFamilia(dadosEvolutivosAtualizados.getChefeFamilia());
+        dadosEvolutivos.setChefeFamilia(dadosEvolutivosAtualizados.isChefeFamilia());
         dadosEvolutivos.setDataUltimaGestacao(dadosEvolutivosAtualizados.getDataUltimaGestacao());
         dadosEvolutivos.setEmRisco(dadosEvolutivosAtualizados.isEmRisco());
         dadosEvolutivos.setEstadoCivil(dadosEvolutivosAtualizados.getEstadoCivil());
