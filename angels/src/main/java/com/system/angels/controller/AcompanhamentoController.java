@@ -72,4 +72,9 @@ public class AcompanhamentoController {
         return ResponseEntity.noContent().build();
     }
 
+    @GetMapping("/listar-acompanhamento-por-gestao/{gestacaoId}")
+    public ResponseEntity<List<Acompanhamento>> listarAcompanhamentoPorGestacaoId(@PathVariable Long gestacaoId) {
+        List<Acompanhamento> acompanhamentos = service.listarAcompanhamentoPorGestacaoId(gestacaoId);
+        return ResponseEntity.ok(acompanhamentos);
+    }
 }

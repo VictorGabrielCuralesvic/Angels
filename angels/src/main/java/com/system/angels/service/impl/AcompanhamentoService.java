@@ -53,4 +53,7 @@ public class AcompanhamentoService implements iAcompanhamentoService {
         return repositorio.save(acompanhamento);
     }
 
+    public List<Acompanhamento> listarAcompanhamentoPorGestacaoId(Long gestacaoId) {
+        return repositorio.findByGestacaoId(gestacaoId);
+    }
 }
