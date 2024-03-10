@@ -80,4 +80,8 @@ public class GestacaoService implements iGestacaoService {
         gestacaoRepository.deleteById(id);
     }
 
+    public List<Gestacao> listarGestacaoPorGestanteId(Long gestanteId) {
+        return gestacaoRepository.findByGestanteId(gestanteId);
+    }
+
 }
