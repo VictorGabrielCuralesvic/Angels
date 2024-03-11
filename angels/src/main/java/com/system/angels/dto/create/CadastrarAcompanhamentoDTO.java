@@ -24,6 +24,7 @@ public class CadastrarAcompanhamentoDTO {
     private Integer batimentosCardiacosFeto;  // Pode ser vazio
     private Integer alturaUterina;  // Pode ser vazio
     private String tipo;  // Pode ser "pré-natal de rotina", "ocorrência" ou "volta"
+    private Boolean riscoIA;
 
     public CadastrarAcompanhamentoDTO(Acompanhamento acompanhamento) {
         this.gestacao_id = acompanhamento.getGestacao().getId();
@@ -35,6 +36,7 @@ public class CadastrarAcompanhamentoDTO {
         this.batimentosCardiacosFeto = acompanhamento.getBatimentosCardiacosFeto();
         this.alturaUterina = acompanhamento.getAlturaUterina();
         this.tipo = acompanhamento.getTipo();
+        this.riscoIA = acompanhamento.getRiscoIA();
     }
 
 }
