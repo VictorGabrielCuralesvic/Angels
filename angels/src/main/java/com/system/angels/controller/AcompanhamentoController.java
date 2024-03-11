@@ -51,6 +51,7 @@ public class AcompanhamentoController {
         acompanhamento.setBatimentosCardiacosFeto(cadastroAcompanhamentoDTO.getBatimentosCardiacosFeto());
         acompanhamento.setAlturaUterina(cadastroAcompanhamentoDTO.getAlturaUterina());
         acompanhamento.setTipo(cadastroAcompanhamentoDTO.getTipo());
+        acompanhamento.setRiscoIA(cadastroAcompanhamentoDTO.getRiscoIA());
 
         Acompanhamento adicionadoAcompanhamento = service.registrarAcompanhamento(acompanhamento);
 
