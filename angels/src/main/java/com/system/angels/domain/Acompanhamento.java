@@ -42,4 +42,7 @@ public class Acompanhamento {
     @Column(nullable = false)
     private String tipo;
 
+    @Column(nullable = false)
+    private Boolean riscoIA;
+
 }

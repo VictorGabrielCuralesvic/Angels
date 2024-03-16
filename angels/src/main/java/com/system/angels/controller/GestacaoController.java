@@ -77,4 +77,11 @@ public class GestacaoController {
         service.deletarGestacao(id);
         return ResponseEntity.noContent().build();
     }
+
+    @GetMapping("/gestacao/{gestanteId}")
+    public ResponseEntity<List<Gestacao>> listarGestacaoPorGestanteId(@PathVariable Long gestanteId) {
+        List<Gestacao> gestacaos = service.listarGestacaoPorGestanteId(gestanteId);
+        return ResponseEntity.ok(gestacaos);
+    }
+
 }

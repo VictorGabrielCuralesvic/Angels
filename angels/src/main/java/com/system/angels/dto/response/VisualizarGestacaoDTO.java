@@ -38,6 +38,18 @@ public class VisualizarGestacaoDTO {
         this.gestante_id = gestacao.getGestante().getId();
         this.consumoAlcool = gestacao.isConsumoAlcool();
         this.frequenciaUsoAlcool = gestacao.getFrequenciaUsoAlcool();
+        this.dataUltimaMenstruacao = gestacao.getDataUltimaMenstruacao();
+        this.dataInicioGestacao = gestacao.getDataInicioGestacao();
+        this.fatorRh = gestacao.getFatorRh();
+        this.fuma = gestacao.isFuma();
+        this.quantidadeCigarrosDia = gestacao.getQuantidadeCigarrosDia();
+        this.usoDrogas = gestacao.getUsoDrogas();
+        this.gravidezPlanejada = gestacao.isGravidezPlanejada();
+        this.grupoSanguineo = gestacao.getGrupoSanguineo();
+        this.pesoAntesGestacao = gestacao.getPesoAntesGestacao();
+        this.riscoGestacional = gestacao.getRiscoGestacional();
+        this.vacinaHepatiteB = gestacao.isVacinaHepatiteB();
+        this.situacaoGestacional = gestacao.getSituacaoGestacional();
     }
 
 }

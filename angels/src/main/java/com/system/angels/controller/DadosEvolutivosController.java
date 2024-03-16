@@ -8,6 +8,7 @@ import com.system.angels.service.impl.DadosEvolutivosService;
 import com.system.angels.service.impl.GestanteService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.FormHttpMessageConverter;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,11 +36,14 @@ public class DadosEvolutivosController {
         return ResponseEntity.ok(cadastrarDadosEvolutivosDTO);
     }
 
+
+    // Não tá funcionando :(
     @GetMapping("/{id}")
     ResponseEntity<VisualizarDadosEvolutivosDTO> buscarDadosEvolutivosPorId(@PathVariable Long id) {
         DadosEvolutivos dadosEvolutivos = service.buscarDadosEvolutivosPorId(id);
         VisualizarDadosEvolutivosDTO visualizarDadosEvolutivosDTO = new VisualizarDadosEvolutivosDTO(dadosEvolutivos);
         return ResponseEntity.ok(visualizarDadosEvolutivosDTO);
+
     }
 
 }
