@@ -110,19 +110,19 @@ Para criar uma gestante juntamente com seus dados evolutivos, você pode usar o 
    - Endpoint: `/consultas`
    - Método: `POST`
    - Corpo da Requisição:
-     ```json
-     {
-       "idGestante": 1,
-       "dataAcompanhamento": "2024-03-20",
-       "realizadoPor": "Dra. Lúcia Pacheco",
-       "pesoAtual": 65,
-       "idadeGestacional": 20,
-       "pressaoArterial": "120/80",
-       "batimentosCardiacosFeto": 140,
-       "alturaUterina": 25,
-       "tipo": "Pré-natal de Rotina"
-     }
-     ```
+```json
+{
+  "idGestante": 1,
+  "dataAcompanhamento": "2024-03-20",
+  "realizadoPor": "Dra. Lúcia Pacheco",
+  "pesoAtual": 65,
+  "idadeGestacional": 20,
+  "pressaoArterial": "120/80",
+  "batimentosCardiacosFeto": 140,
+  "alturaUterina": 25,
+  "tipo": "Pré-natal de Rotina"
+}
+```
 
 2. **Dados da gestação**:
    - Endpoint: `/gestacao`
