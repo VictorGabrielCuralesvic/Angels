@@ -55,9 +55,9 @@ Para criar uma gestante juntamente com seus dados evolutivos, você pode usar o 
 
 #### Requisição HTTP
 1. **Cadastro de Gestantes**:
-- Endpoint: `/gestantes`
-- Método: `POST`
-- Corpo da Requisição:
+   - Endpoint: `/gestantes`
+   - Método: `POST`
+   - Corpo da Requisição:
 ```json
 {
   "gestante": {
